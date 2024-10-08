@@ -10,7 +10,12 @@ import spaceFarmImage from "../assets/images/space-farm.png";
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<Image src={heroImage} alt="Temporal" class="relative -top-[39px]" />
+		<Image
+			src={heroImage}
+			alt="Temporal"
+			class="relative mx-auto -top-[39px]"
+			loading="eager"
+		/>
 		<h1
 			class="font-[Gruppo] text-[39px] tracking-[.25rem] mt-[4px] text-center leading-[25px]"
 		>
@@ -33,14 +38,35 @@ import spaceFarmImage from "../assets/images/space-farm.png";
 					<p
 						class="mt-[20px] text-[20px] leading-[25px] tracking-[.125rem]"
 					>
-						Lorem ipsum dolor sit amet consectetur. Mauris donec
-						bibendum nibh nam. Pellentesque nibh odio auctor risus
-						dui ipsum lorem odio nec. Tellus tincidunt imperdiet
-						vitae commodo nibh dolor quam habitant at. Ut nibh lorem
-						sed diam pretium at sit suscipit neque.
+						My name is Kenneth Quintero, and my favorite activities
+						are wondering, learning and doing, particularly in that
+						order.
+					</p>
+					<p
+						class="mt-[20px] text-[20px] leading-[25px] tracking-[.125rem]"
+					>
+						I often find myself deeply intrigued by the 'why' and
+						'how' of most of the things that exist and happen in
+						this world, so you could say I'm mostly driven by
+						curiosity.
+					</p>
+					<p
+						class="mt-[20px] text-[20px] leading-[25px] tracking-[.125rem]"
+					>
+						I believe I can make an impact in this world; right now,
+						I'm just figuring out how.
+					</p>
+					<p
+						class="mt-[20px] text-[20px] leading-[25px] tracking-[.125rem]"
+					>
+						<a
+							href="mailto:kennethgqv@gmail.com"
+							class="hover:underline">email</a
+						> |
+						<a href="" class="hover:underline">github</a>
 					</p>
 				</div>
-				<Image src={spaceFarmImage} alt="Temporal" class="mt-[15px]" />
+				<!-- <Image src={spaceFarmImage} alt="Temporal" class="mt-[15px]" /> -->
 			</div>
 			<div>
 				<Image src={risingSunImage} alt="Temporal" />
@@ -51,6 +77,10 @@ import spaceFarmImage from "../assets/images/space-farm.png";
 				</h2>
 			</div>
 		</div>
-		<Image src={massiveWorldImage} alt="Temporal" class="mt-[72px]" />
+		<Image
+			src={massiveWorldImage}
+			alt="Temporal"
+			class="mt-[72px] mx-auto"
+		/>
 	</main>
 </Layout>
