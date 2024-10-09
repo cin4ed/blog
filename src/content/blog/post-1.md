@@ -1,6 +1,7 @@
 ---
 title: "Building Ink Note"
-date: "17 Sep 2024"
+date: 2024-10-09
+slug: building-ink-note
 ---
 
 ![A random image](https://i.pinimg.com/736x/17/0e/30/170e30306a1da6d8d1d90aa96704146c.jpg)

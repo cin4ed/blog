@@ -1,6 +1,7 @@
 ---
 title: "Procedurally generated cards"
-date: "27 Sep 2024"
+date: 2024-10-27
+slug: procedurally-generated-cards
 ---
 
 For this mini-project we're going to create a program that generates random 

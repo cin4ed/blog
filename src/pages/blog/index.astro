@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout title="Betweenframes - Projects">
+    <main class="lg:w-[1171px] mx-auto px-4">
+        <div class="flex justify-between items-center mt-5">
+            <h1
+                class="font-[Gruppo] text-[39px] tracking-[.25rem] leading-[25px]"
+            >
+                Blog
+            </h1>
+            <div class="flex items-end divide-x">
+                <a href="/" class="font-[Homenaje] px-2 text-xl hover:underline"
+                    >home</a
+                >
+                <a
+                    href="/projects"
+                    class="font-[Homenaje] px-2 text-xl border-secondary-foreground hover:underline"
+                    >projects</a
+                >
+            </div>
+        </div>
+        <p class="mt-10 text-zinc-300"></p>
+        <div class="mt-7 divide-y border-foreground">
+            {
+                posts.map((post) => (
+                    <div
+                        class="flex flex-col lg:flex-row lg:items-center gap-3 p-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700 select-none"
+                        onclick={`location.href='/blog/${post.slug}'`}
+                    >
+                        <a href="#" class="font-[Homenaje] text-xl">
+                            {post.data.title}
+                        </a>
+                        <div class="hidden lg:inline">|</div>
+                        <span class="font-[Homenaje] text-zinc-300 text-lg">
+                            {post.data.date.toDateString()}
+                        </span>
+                    </div>
+                ))
+            }
+        </div>
+    </main>
+</Layout>

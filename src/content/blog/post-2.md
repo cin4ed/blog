@@ -1,6 +1,7 @@
 ---
 title: "How spells get casted"
-date: "25 Sep 2024"
+date: 2024-10-25
+slug: how-spells-get-casted
 ---
 
 ![Lorem Ipsum](https://i.pinimg.com/originals/59/8e/6f/598e6f23715f587c7121fbb0e3f274cd.gif)
