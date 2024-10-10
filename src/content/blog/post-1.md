@@ -1,5 +1,6 @@
 ---
 title: "Building Ink Note"
+description: "Building a note taking app that lets have fun."
 date: 2024-10-09
 slug: building-ink-note
 ---

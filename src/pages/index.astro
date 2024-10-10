@@ -5,53 +5,55 @@ import massiveWorldImage from "../assets/images/massive-world.png";
 ---
 
 <Layout title="Welcome to Astro.">
-    <main class="flex flex-col justify-between h-screen">
-        <div class="flex-1">
-            <h1 class="text-center font-[Gruppo] text-[39px] tracking-[.25rem] mt-8 leading-[25px]">
+    <main class="min-h-screen gap-8 flex flex-col justify-between">
+        <div class="px-10 pt-10">
+            <h1
+                class="text-center font-[Gruppo] text-3xl lg:text-[39px] tracking-[.25rem] leading-[25px]"
+            >
                 Between Frames
             </h1>
-        <div class="mt-10">
-            <div class="font-[Homenaje] w-[605px] mx-auto">
-                <h2 class="text-[20px] leading-[25px] tracking-[.125rem]">
-                    About me
-                </h2>
-                <p class="mt-[20px] text-[20px] leading-[25px] tracking-[.125rem]">
-                    Hi, my name is Kenneth Quintero, and my favorite activities
-                    are wondering, learning and doing, particularly in that
-                    order.
-                </p>
-                <p
-                    class="mt-[20px] text-[20px] leading-[25px] tracking-[.125rem]"
-                >
-                    I often find myself deeply intrigued by the 'why' and
-                    'how' of most of the things that exist and happen in
-                    this world, so you could say I'm driven by curiosity.
-                </p>
-                <p class="mt-[20px] text-[20px] leading-[25px] tracking-[.125rem]">
-                    <a href="mailto:kennethgqv@gmail.com" class="hover:underline">email</a> |
-                    <a href="https://github.com/cin4ed" class="hover:underline">github</a>
-                </p>
-                <div class="grid grid-cols-2 mt-7">
+            <div class="mt-10 font-[Homenaje] text-lg md:max-w-lg mx-auto">
+                <h2>About me</h2>
+                <div class="mt-4 space-y-3">
+                    <p>
+                        Hi, my name is Kenneth Quintero, and my favorite
+                        activities are wondering, learning and doing,
+                        particularly in that order.
+                    </p>
+                    <p>
+                        I often find myself deeply intrigued by the 'why' and
+                        'how' of most of the things that exist and happen in
+                        this world, so you could say I'm driven by curiosity.
+                    </p>
+                </div>
+                <div class="flex justify-center mt-7 divide-x">
                     <a
                         href="/projects"
-                        class="font-[Homenaje] text-[20px] leading-[25px] tracking-[.125rem] underline block text-center hover:bg-secondary-foreground py-2 transition-all ease-out duration-700"
+                        class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
+                        >projects</a
                     >
-                        PROJECTS
-                    </a>
                     <a
                         href="/blog"
-                        class="font-[Homenaje] text-[20px] leading-[25px] tracking-[.125rem] underline block text-center hover:bg-secondary-foreground py-2 transition-all ease-out duration-700"
+                        class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
+                        >blog</a
                     >
-                        BLOG
-                    </a>
+                    <a
+                        href="mailto:kennethgqv@gmail.com"
+                        class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
+                        >email</a
+                    >
+                    <a
+                        href="https://github.com/cin4ed"
+                        class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
+                        >github</a
+                    >
                 </div>
             </div>
         </div>
-        </div>
         <Image
             src={massiveWorldImage}
+            class="object-cover h-56 sm:h-72 md:h-auto"
             alt="A human on the edge of a space structure observes a giant ring rising above a massive planet below it."
-            class="mx-auto mt-2"
         />
     </main>
 </Layout>

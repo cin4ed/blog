@@ -2,42 +2,58 @@
 import Layout from "../../layouts/Layout.astro";
 
 const projects = [
-	{
-		title: "Worky",
-		description: "A productivity tool that lets you have multiple workspaces for your macOS desktop.",
-		link: "#"
-	},
-	{
-		title: "imhearing",
-		description: "A fun app that updates your X bio to show what you're listening to on Spotify.",
-		link: "#"
-	}
+    {
+        title: "Worky",
+        description:
+            "A productivity tool that lets you have multiple workspaces for your macOS desktop.",
+        link: "#",
+    },
+    {
+        title: "imhearing",
+        description:
+            "A fun app that updates your X bio to show what you're listening to on Spotify.",
+        link: "#",
+    },
 ];
 ---
 
 <Layout title="Betweenframes - Projects">
     <main class="lg:w-[1171px] mx-auto px-4">
-	<div class="flex justify-between items-center mt-5">
-        	<h1 class="font-[Gruppo] text-[39px] tracking-[.25rem] leading-[25px]">
-            		Projects
-        	</h1>
-		<div class="flex items-end divide-x">
-			<a href="/" class="font-[Homenaje] px-2 text-xl hover:underline">home</a>
-			<a href="/blog" class="font-[Homenaje] px-2 text-xl border-secondary-foreground hover:underline">blog</a>
-		</div>
-	</div>
-	<p class="mt-10 text-zinc-300">This is a collection of projects I believe are worth sharing. Some are small and simple, while others are more complex, but each one has its own unique story.</p>
-        <div class="mt-7 divide-y border-foreground">
-		{projects.map((project) => (
-		<div 
-			class="flex flex-col lg:flex-row lg:items-center gap-3 p-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700 select-none" 
-			onclick={`location.href='${project.link}'`}
-		>
-			<a href="#" class="font-[Homenaje] text-xl">{project.title}</a>
-			<div class="hidden lg:inline">|</div>
-			<span class="font-[Homenaje] text-zinc-300 text-lg">{project.description}</span>
-		</div>
-		))}
-	</div>
+        <div class="flex justify-between items-center mt-5">
+            <h1
+                class="font-[Gruppo] text-[39px] tracking-[.25rem] leading-[25px]"
+            >
+                Projects
+            </h1>
+            <div class="flex items-end divide-x">
+                <a href="/" class="font-[Homenaje] px-2 text-xl hover:underline"
+                    >home</a
+                >
+                <a
+                    href="/blog"
+                    class="font-[Homenaje] px-2 text-xl border-secondary-foreground hover:underline"
+                    >blog</a
+                >
+            </div>
+        </div>
+        <p class="mt-7 text-zinc-300">
+            This is a collection of projects I believe are worth sharing. Some
+            are small and simple, while others are more complex, but each one
+            has its own unique story.
+        </p>
+        <div class="mt-4 divide-y border-foreground">
+            {
+                projects.map((project) => (
+                    <div class="flex flex-col p-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700 select-none">
+                        <div class="font-[Homenaje] text-xl">
+                            {project.title}
+                        </div>
+                        <div class="font-[Homenaje] text-lg text-zinc-300">
+                            {project.description}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
     </main>
 </Layout>

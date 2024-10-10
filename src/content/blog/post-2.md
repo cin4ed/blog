@@ -1,5 +1,6 @@
 ---
 title: "How spells get casted"
+description: "A placeholder post to test my web page."
 date: 2024-10-25
 slug: how-spells-get-casted
 ---

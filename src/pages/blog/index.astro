@@ -30,16 +30,25 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
             {
                 posts.map((post) => (
                     <div
-                        class="flex flex-col lg:flex-row lg:items-center gap-3 p-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700 select-none"
+                        class="flex flex-col p-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700 select-none"
                         onclick={`location.href='/blog/${post.slug}'`}
                     >
-                        <a href="#" class="font-[Homenaje] text-xl">
+                        <div class="font-[Homenaje] text-xl">
                             {post.data.title}
-                        </a>
-                        <div class="hidden lg:inline">|</div>
-                        <span class="font-[Homenaje] text-zinc-300 text-lg">
-                            {post.data.date.toDateString()}
-                        </span>
+                        </div>
+                        <div class="font-[Homenaje] text-lg text-zinc-300">
+                            {post.data.description}
+                        </div>
+                        <p>
+                            <span>|</span>
+                            <span class="font-[Homenaje] text-zinc-400">
+                                {post.data.date
+                                    .toDateString()
+                                    .split(" ")
+                                    .slice(1)
+                                    .join(" ")}
+                            </span>
+                        </p>
                     </div>
                 ))
             }
