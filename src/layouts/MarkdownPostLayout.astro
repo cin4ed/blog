@@ -3,11 +3,11 @@ import "@fontsource/gruppo";
 import "@fontsource/homenaje";
 
 interface Props {
+  title: string;
+  frontmatter: {
     title: string;
-    frontmatter: {
-        title: string;
-        date: string;
-    };
+    date: string;
+  };
 }
 
 const { title, frontmatter } = Astro.props;
@@ -15,44 +15,70 @@ const { title, frontmatter } = Astro.props;
 
 <!doctype html>
 <html lang="en" class="bg-background text-[#eee] antialiased">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-    </head>
-    <body class="p-4">
-        <main class="max-w-3xl mx-auto">
-            <div class="flex justify-end divide-x text-foreground">
-                <a href="/" class="font-[Homenaje] px-2 text-xl hover:underline border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-                    >home</a
-                >
-                <a
-                    href="/projects"
-                    class="font-[Homenaje] px-2 text-xl border-secondary-foreground hover:underline border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-                    >projects</a
-                >
-                <a href="/blog" class="font-[Homenaje] px-2 text-xl border-secondary-foreground hover:underline border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-                    >blog</a
-                >
-            </div>
-            <h1 class="mt-4 text-4xl font-[Gruppo] text-foreground">{frontmatter.title}</h1>
-            <p class="text-zinc-400 mt-2 text-sm">{frontmatter.date.toDateString()}</p>
-            <div class="mt-3 pt-3 font-extralight sm:font-light space-y-4 border-t border-secondary-foreground">
-                <slot />
-            </div>
-        </main>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="p-4">
+    <main class="max-w-3xl mx-auto">
+      <div class="flex justify-end divide-x">
+        <a href="/" class="main-link">home</a>
+        <a href="/projects" class="main-link">projects</a>
+        <a href="/blog" class="main-link">blog</a>
+      </div>
+      <h1 id="title">{frontmatter.title}</h1>
+      <p id="date">{frontmatter.date.toDateString()}</p>
+      <div
+        class="mt-3 pt-3 font-extralight sm:font-light space-y-4 border-t border-secondary-foreground"
+      >
+        <slot />
+      </div>
+    </main>
+  </body>
 </html>
 
 <style is:global>
-    img {
-        @apply w-full;
-        @apply object-contain;
-    }
+  #title {
+    @apply mt-4;
+    @apply text-4xl;
+    @apply font-[Gruppo];
+    @apply text-foreground;
+  }
+  #date {
+    @apply text-zinc-400;
+    @apply mt-2;
+    @apply text-sm;
+  }
+  .main-link {
+    @apply font-[Homenaje];
+    @apply text-foreground;
+    @apply px-2 text-xl;
+    @apply hover:underline;
+    @apply border-secondary-foreground;
+    @apply hover:bg-secondary-foreground;
+    @apply transition-all;
+    @apply cursor-pointer;
+    @apply ease-out;
+    @apply duration-700;
+  }
+  img {
+    @apply w-full;
+    @apply object-contain;
+  }
+  .introduction {
+  }
+  h1 {
+    @apply font-[Gruppo];
+    @apply text-2xl;
+    @apply text-foreground;
+    /* @apply font-[Homenaje];
+    @apply text-xl; */
+  }
 </style>
