@@ -15,8 +15,11 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/gruppo": "^5.1.0",
     "@fontsource/homenaje": "^5.1.0",
+    "@fontsource/inter": "^5.1.0",
+    "@fontsource/roboto": "^5.1.0",
     "@fontsource/twinkle-star": "^5.1.0",
     "astro": "^4.15.6",
+    "astro-expressive-code": "^0.38.3",
     "tailwindcss": "^3.4.11"
   }
 }

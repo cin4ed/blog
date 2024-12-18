@@ -1,21 +1,21 @@
 ---
-title: "Laravel Sail en Mac Silicon"
+title: "Resolviendo Problemas Con Laravel Sail en Mac Silicon"
 description: "Dealing with Docker and a new processor architecture."
 date: 2024-12-12
 slug: running-laravel-sail-on-mac-silicon
 ---
 
 <section class="introduction">
-En este post hablo sobre Laravel Sail y cómo solucioné los problemas que 
-surgieron al intentar ejecutar un proyecto antiguo en mi nueva Mac Mini M4.
+En este post hablo acerca de Laravel Sail y cómo solucioné algunos problemas que 
+surgieron al intentar ejecutar un antiguo proyecto en mi nueva Mac Mini M4.
 </section>
 
 # ¿Qué es Laravel Sail?
 
-Si estás familiarizado con Laravel, probablemente hayas escuchado sobre Laravel
-Sail. Para quienes no lo conocen, Laravel Sail es una herramienta proporcionada
-por la comunidad de Laravel que, en teoría, nos facilita el proceso de configurar
-un proyecto en nuestra computadora.
+Si estás familiarizado con [Laravel](https://laravel.com/), probablemente hayas escuchado sobre [Laravel
+Sail](https://laravel.com/docs/11.x/sail). Para quienes no lo conocen, Laravel
+Sail es una herramienta proporcionada por la comunidad de Laravel que, en
+teoría, nos facilita el proceso de configurar un proyecto en nuestra computadora.
 
 Cuando desarrollas un proyecto con Laravel, es necesario configurar una base de
 datos: crearla, asignarle un usuario, establecer una contraseña, iniciar el
@@ -23,9 +23,10 @@ servicio, y luego editar el archivo `.env` para añadir las credenciales
 correspondientes. Después, debes levantar el proyecto y esperar que todo
 funcione correctamente (a veces no sin antes cruzar los dedos).
 
-Aunque existen herramientas como Laragon, Landock, Lando, entre otras, que
-simplifican este proceso, ninguna parece integrar todo de forma tan eficiente y
-directa como Laravel Sail.
+Aunque existen herramientas como [Laragon](https://laragon.org/), [Laradock](https://laradock.io/),
+[Lando](https://docs.lando.dev/plugins/laravel/), entre otras, que simplifican
+este proceso, ninguna parece integrar todo de forma tan eficiente y directa como
+Laravel Sail.
 
 # Instalación
 
@@ -46,10 +47,10 @@ código que no se incluye en el entorno de producción.
 Si Laravel Sail está instalado, lo encontrarás como una dependencia dentro de
 esta sección, similar a esto:
 
-```
+```json {3}
 "require-dev": {
     ...
-    "laravel/sail": "^1.26", // <----
+    "laravel/sail": "^1.26",
     ...
 },
 ```
@@ -57,7 +58,7 @@ esta sección, similar a esto:
 Si no aparece en esta sección, puedes instalarlo ejecutando el siguiente
 comando:
 
-```
+```shell
 composer require laravel/sail --devw1
 ```
 
@@ -86,6 +87,7 @@ que dependen de el:
 
 ./vendor/bin/sail down --rmi all -v
 
+```shell
 kenneth@192 sigiprof-backend % ./vendor/bin/sail down --rmi all -v
 [+] Running 7/7
 ✔ Container sigiprof-backend-laravel.test-1 Removed 0.0s
@@ -95,6 +97,7 @@ kenneth@192 sigiprof-backend % ./vendor/bin/sail down --rmi all -v
 ✔ Image sail-8.3/app:latest Removed 1.1s
 ✔ Image sail-8.4/app:latest Removed 1.1s
 ✔ Network sigiprof-backend_sail Removed
+```
 
 Volvemos a ejecutar el comando ./vendor/bin/sail up
 
