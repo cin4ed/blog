@@ -1,59 +1,99 @@
 ---
-import { Image } from "astro:assets";
-import Layout from "../layouts/Layout.astro";
-import massiveWorldImage from "../assets/images/massive-world.png";
+import "@fontsource/Gruppo";
+import "@fontsource/inter";
+import { getCollection } from "astro:content";
+
+const blogPosts = await getCollection("blog");
 ---
 
-<Layout title="BetweenFrames">
-    <main class="min-h-screen gap-8 flex flex-col justify-between">
-        <div class="px-8 pt-10">
-            <h1
-                class="text-center font-[Gruppo] text-5xl lg:text-[39px] leading-10 tracking-widest transition-all hover:tracking-normal"
-            >
-                Between Frames
-            </h1>
-            <div class="mt-10 font-[Homenaje] text-lg md:max-w-lg mx-auto">
-                <h2>About me</h2>
-                <div class="mt-4 space-y-3">
-                    <p>
-                        Hi, my name is Kenneth Quintero, and my favorite
-                        activities are wondering, learning and doing,
-                        particularly in that order.
-                    </p>
-                    <p>
-                        I often find myself deeply intrigued by the 'why' and
-                        'how' of most of the things that exist and happen in
-                        this world, so you could say I'm driven by curiosity.
-                    </p>
-                </div>
-                <div class="flex justify-center mt-7 divide-x">
-                    <a
-                        href="/projects"
-                        class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-                        >projects</a
-                    >
-                    <a
-                        href="/blog"
-                        class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-                        >blog</a
-                    >
-                    <a
-                        href="mailto:kennethgqv@gmail.com"
-                        class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-                        >email</a
-                    >
-                    <a
-                        href="https://github.com/cin4ed"
-                        class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-                        >github</a
-                    >
-                </div>
-            </div>
+<!doctype html>
+<html lang="en" class="bg-background text-foreground antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <title>BetweenFrames</title>
+  </head>
+  <body class="p-4">
+    <h1
+      class="text-center font-[Gruppo] text-primary text-3xl lg:text-[39px] tracking-widest"
+    >
+      Between Frames
+    </h1>
+    <!-- <p class="font-light">
+        Hi there! I'm Kenneth, a software engineer and writer. I'm currently working on a few projects and writing about them here. Feel free to check them out!
+    </p> -->
+    <p class="font-light mt-3">
+      ¡Hola! Soy Kenneth, un ingeniero de software y este es mi blog.
+      Actualmente estoy trabajando en algunos proyectos y escribiendo sobre
+      ellos aquí. ¡Siéntete libre de echarles un vistazo!
+    </p>
+    <div class="grid gap-5 mt-3 auto-rows-fr">
+      {
+        blogPosts.map((post) => (
+          <div class="border rounded border-secondary p-2">
+            <h2 class="text-lg font-[Inter]">{post.data.title}</h2>
+            <p class="mt-2">{post.data.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </body>
+</html>
+
+<!-- <BaseLayout title="BetweenFrames"> -->
+<!-- <div class="px-8 pt-10">
+      <div
+        class="mt-10 font-[Homenaje] text-lg md:text-2xl md:max-w-lg mx-auto"
+      >
+        <div class="mt-4 space-y-3">
+          <p class="text-center">
+          </p>
         </div>
-        <Image
-            src={massiveWorldImage}
-            class="object-cover h-56 sm:h-72 md:h-auto"
-            alt="A human on the edge of a space structure observes a giant ring rising above a massive planet below it."
-        />
-    </main>
-</Layout>
+        <div class="flex justify-center mt-7 divide-x">
+          <a
+            href="/projects"
+            class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
+            >projects</a
+          >
+          <a
+            href="/blog"
+            class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
+            >blog</a
+          >
+          <a
+            href="mailto:kennethgqv@gmail.com"
+            class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
+            >email</a
+          >
+          <a
+            href="https://github.com/cin4ed"
+            class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
+            >github</a
+          >
+        </div>
+      </div>
+      <div class="grid gap-5 py-10">
+        {
+          blogPosts.map((post) => {
+            return (
+              <div class="rounded-lg p-2 border border-secondary-foreground">
+                <h2 class="text-2xl font-[Gruppo]">{post.data.title}</h2>
+                <p class="mt-2">{post.data.description}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+    <Image
+      src={massiveWorldImage}
+      class="object-cover h-56 sm:h-72 md:h-auto"
+      alt="A human on the edge of a space structure observes a giant ring rising above a massive planet below it."
+    /> -->
+<!-- </BaseLayout> -->
