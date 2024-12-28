@@ -3,6 +3,7 @@ title: "Procedurally generated cards"
 description: "Creating collectible cards artificially."
 date: 2024-10-27
 slug: procedurally-generated-cards
+id: d510d3f8-8536-4927-957e-11b2598e9546
 ---
 
 For this mini-project we're going to create a program that generates random

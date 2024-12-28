@@ -1,15 +1,12 @@
 ---
 title: "Resolviendo Problemas Con Laravel Sail en mi Mac Mini M4"
-description: "Dealing with Docker and a new processor architecture."
+description: "En este post hablo acerca de Laravel Sail y cómo solucioné algunos problemas
+compatibilidad que surgieron al intentar ejecutar un antiguo proyecto en mi nueva Mac Mini 
+M4."
 date: 2024-12-12
 slug: laravel-sail-mac-mini
+id: 55c10b3d-9e3f-438c-b3d5-a3431bdadb84
 ---
-
-<section class="introduction">
-En este post hablo acerca de Laravel Sail y cómo solucioné algunos problemas
-compatibilidad que surgieron al intentar ejecutar un antiguo proyecto en mi nueva Mac Mini 
-M4.
-</section>
 
 # Diagnóstico del Error
 

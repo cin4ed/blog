@@ -1,9 +1,4 @@
 ---
-import "@fontsource/gruppo";
-import "@fontsource/homenaje";
-import "@fontsource/inter/200.css";
-import "@fontsource/inter/400.css";
-
 // interface Props {
 //   title: string;
 //   frontmatter: {
@@ -50,11 +45,6 @@ const spanishDate = date.toLocaleDateString("es-ES", {
         <slot />
       </div>
     </main>
-    <footer
-      class="font-[Inter] font-thin text-foreground text-sm text-center py-4"
-    >
-      betweenframes
-    </footer>
   </body>
 </html>
 
@@ -62,7 +52,6 @@ const spanishDate = date.toLocaleDateString("es-ES", {
   #title {
     @apply mt-4;
     @apply text-4xl;
-    @apply font-[Gruppo];
     @apply text-foreground;
   }
   #date {
@@ -71,7 +60,6 @@ const spanishDate = date.toLocaleDateString("es-ES", {
     @apply text-sm;
   }
   .main-link {
-    @apply font-[Homenaje];
     @apply text-foreground;
     @apply px-2 text-xl;
     @apply hover:underline;
@@ -85,24 +73,20 @@ const spanishDate = date.toLocaleDateString("es-ES", {
     @apply object-contain;
   }
   .introduction {
-    @apply font-[Inter];
     @apply p-4;
   }
 
   h1 {
-    @apply font-[Gruppo];
     @apply text-2xl;
     @apply text-foreground;
   }
 
   h2 {
-    @apply font-[Gruppo];
     @apply text-xl;
     @apply text-foreground;
   }
 
   p {
-    @apply font-[Inter];
     @apply font-thin;
   }
   a {

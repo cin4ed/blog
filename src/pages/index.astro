@@ -1,9 +1,17 @@
 ---
 import "@fontsource/Gruppo";
+import "@fontsource/homenaje";
 import "@fontsource/inter";
-import { getCollection } from "astro:content";
+import Post from "@components/Post.astro";
+import Links from "@components/Links.astro";
 
-const blogPosts = await getCollection("blog");
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const posts: CollectionEntry<"posts">[] = await getCollection("posts");
+posts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 ---
 
 <!doctype html>
@@ -19,86 +27,33 @@ const blogPosts = await getCollection("blog");
     <meta name="generator" content={Astro.generator} />
     <title>BetweenFrames</title>
   </head>
-  <body class="p-4">
+  <body class="min-h-screen px-4 pb-10 pt-5 lg:py-0 lg:pb-6 lg:space-y-0">
     <h1
-      class="text-center font-[Gruppo] text-primary text-3xl lg:text-[39px] tracking-widest"
+      class="text-center font-[Gruppo] text-primary text-3xl lg:text-[39px] lg:py-4 tracking-widest"
     >
       Between Frames
     </h1>
-    <!-- <p class="font-light">
-        Hi there! I'm Kenneth, a software engineer and writer. I'm currently working on a few projects and writing about them here. Feel free to check them out!
-    </p> -->
-    <p class="font-light mt-3">
-      ¡Hola! Soy Kenneth, un ingeniero de software y este es mi blog.
-      Actualmente estoy trabajando en algunos proyectos y escribiendo sobre
-      ellos aquí. ¡Siéntete libre de echarles un vistazo!
-    </p>
-    <h2>Posts</h2>
-    <div class="grid gap-3 mt-3 auto-rows-fr">
-      {
-        blogPosts.map((post) => (
-          <div class="border rounded border-secondary">
-            <a href={`/blog/posts/${post.slug}`}>
-              <div class="bg-secondary p-1">
-                <h2 class="text-lg font-[Inter]">{post.data.title}</h2>
-              </div>
-              <p class="mt-2">{post.data.description}</p>
-            </a>
-          </div>
-        ))
-      }
+    <div class="lg:max-w-5xl mx-auto lg:grid lg:grid-cols-8 lg:gap-5">
+      <div class="col-span-2">
+        <!-- <p>
+          ¡Hola! Soy Kenneth, un ingeniero de software y este es mi blog.
+          Actualmente estoy trabajando en algunos proyectos y escribiendo sobre
+          ellos aquí. ¡Siéntete libre de echarles un vistazo!
+        </p> -->
+        <Links />
+      </div>
+      <div class="col-span-6 divide-y *:py-6 first:*:pt-0 last:*:pb-0">
+        {posts.map(async (post) => <Post post={post} />)}
+      </div>
     </div>
   </body>
-</html>
 
-<!-- <BaseLayout title="BetweenFrames"> -->
-<!-- <div class="px-8 pt-10">
-      <div
-        class="mt-10 font-[Homenaje] text-lg md:text-2xl md:max-w-lg mx-auto"
-      >
-        <div class="mt-4 space-y-3">
-          <p class="text-center">
-          </p>
-        </div>
-        <div class="flex justify-center mt-7 divide-x">
-          <a
-            href="/projects"
-            class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-            >projects</a
-          >
-          <a
-            href="/blog"
-            class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-            >blog</a
-          >
-          <a
-            href="mailto:kennethgqv@gmail.com"
-            class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-            >email</a
-          >
-          <a
-            href="https://github.com/cin4ed"
-            class="hover:underline px-2 border-secondary-foreground hover:bg-secondary-foreground transition-all cursor-pointer ease-out duration-700"
-            >github</a
-          >
-        </div>
-      </div>
-      <div class="grid gap-5 py-10">
-        {
-          blogPosts.map((post) => {
-            return (
-              <div class="rounded-lg p-2 border border-secondary-foreground">
-                <h2 class="text-2xl font-[Gruppo]">{post.data.title}</h2>
-                <p class="mt-2">{post.data.description}</p>
-              </div>
-            );
-          })
-        }
-      </div>
-    </div>
-    <Image
-      src={massiveWorldImage}
-      class="object-cover h-56 sm:h-72 md:h-auto"
-      alt="A human on the edge of a space structure observes a giant ring rising above a massive planet below it."
-    /> -->
-<!-- </BaseLayout> -->
+  <style>
+    /* body {
+    background-image: url("../assets/images/massive-world.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+  } */
+  </style>
+</html>
