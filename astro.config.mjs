@@ -13,4 +13,15 @@ export default defineConfig({
       plugins: [pluginCollapsibleSections()],
     }),
   ],
+  vite: {
+    build: {
+      rollupOptions: {
+        external: [
+          "@fontsource/gruppo",
+          "@fontsource/homenaje",
+          "@fontsource/inter",
+        ],
+      },
+    },
+  },
 });
