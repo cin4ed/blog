@@ -14,18 +14,6 @@ importers:
       '@expressive-code/plugin-collapsible-sections':
         specifier: ^0.38.3
         version: 0.38.3
-      '@fontsource/gruppo':
-        specifier: ^5.1.0
-        version: 5.1.0
-      '@fontsource/homenaje':
-        specifier: ^5.1.0
-        version: 5.1.0
-      '@fontsource/inter':
-        specifier: ^5.1.0
-        version: 5.1.0
-      '@fontsource/twinkle-star':
-        specifier: ^5.1.0
-        version: 5.1.0
       astro:
         specifier: ^5.1.0
         version: 5.1.1(jiti@2.4.2)(rollup@4.28.1)(typescript@5.7.2)(yaml@2.6.1)
@@ -389,18 +377,6 @@ packages:
 
   '@expressive-code/plugin-text-markers@0.38.3':
     resolution: {integrity: sha512-dPK3+BVGTbTmGQGU3Fkj3jZ3OltWUAlxetMHI6limUGCWBCucZiwoZeFM/WmqQa71GyKRzhBT+iEov6kkz2xVA==}
-
-  '@fontsource/gruppo@5.1.0':
-    resolution: {integrity: sha512-S15iJ+is8DHGS0/qPVldT0dFDr6JCnZJC9GrDvQ45xHF6qe3SKotCsupp69UTcAZNEk3H4bo3kik72TGGgpRzA==}
-
-  '@fontsource/homenaje@5.1.0':
-    resolution: {integrity: sha512-1RJxPEV/rg4MiwSKVRKDdcPaTQ7PdvWv0K/xiZMtmH4kSnsAdCo0ikootAfKGYt24SM/riY+blKj4FehLvGf5Q==}
-
-  '@fontsource/inter@5.1.0':
-    resolution: {integrity: sha512-zKZR3kf1G0noIes1frLfOHP5EXVVm0M7sV/l9f/AaYf+M/DId35FO4LkigWjqWYjTJZGgplhdv4cB+ssvCqr5A==}
-
-  '@fontsource/twinkle-star@5.1.0':
-    resolution: {integrity: sha512-j4zXPXlhLpduP59A9hsdleF+1ftXPo4TbeNRAxK1E9v6N5rV/BL0PNmQ1WSMhljfCopSEQsy168xMrEd9/9E4g==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2449,14 +2425,6 @@ snapshots:
   '@expressive-code/plugin-text-markers@0.38.3':
     dependencies:
       '@expressive-code/core': 0.38.3
-
-  '@fontsource/gruppo@5.1.0': {}
-
-  '@fontsource/homenaje@5.1.0': {}
-
-  '@fontsource/inter@5.1.0': {}
-
-  '@fontsource/twinkle-star@5.1.0': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
