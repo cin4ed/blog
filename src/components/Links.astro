@@ -3,11 +3,18 @@ import "@styles/fonts.css";
 ---
 
 <div
-  class="flex justify-center divide-x font-[Homenaje] text-primary text-lg lg:flex-col lg:divide-x-0 lg:divide-y lg:*:py-1 lg:first:*:pt-0 lg:last:*:pb-0"
+  class="flex justify-center divide-x font-[Homenaje] text-primary text-lg md:flex-col md:divide-x-0 md:divide-y md:*:py-1"
 >
+  <span class="px-2 border-secondary bg-secondary">Navigation</span>
   <a
-    href="#"
-    class="hover:underline px-2 border-secondary hover:bg-secondary transition-all cursor-pointer ease-out duration-700 pointer-events-none text-zinc-700"
+    href="/"
+    class="hover:underline px-2 border-secondary hover:bg-secondary transition-all cursor-pointer ease-out duration-700"
+  >
+    Home
+  </a>
+  <a
+    href="/about"
+    class="hover:underline px-2 border-secondary hover:bg-secondary transition-all cursor-pointer ease-out duration-700"
   >
     About Me
   </a>
@@ -17,8 +24,9 @@ import "@styles/fonts.css";
   >
     Projects
   </a>
+  <span class="px-2 border-secondary bg-secondary">Contact</span>
   <a
-    href="#"
+    href="https://github.com/cin4ed"
     class="hover:underline px-2 border-secondary hover:bg-secondary transition-all cursor-pointer ease-out duration-700"
   >
     Github

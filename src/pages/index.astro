@@ -1,5 +1,4 @@
 ---
-// import "@fontsource/Gruppo";
 import "@styles/fonts.css";
 import Post from "@components/Post.astro";
 import Links from "@components/Links.astro";
@@ -26,19 +25,14 @@ posts.sort(
     <meta name="generator" content={Astro.generator} />
     <title>BetweenFrames</title>
   </head>
-  <body class="min-h-screen px-4 pb-10 pt-5 lg:py-0 lg:pb-6 lg:space-y-0">
+  <body class="min-h-screen px-4 pb-10 pt-5 md:py-0 md:pb-6 md:space-y-0">
     <h1
-      class="text-center font-[Gruppo] text-primary text-3xl lg:text-[39px] lg:py-4 tracking-widest"
+      class="text-center font-[Gruppo] text-primary text-3xl md:text-[39px] md:py-4 tracking-widest"
     >
       Between Frames
     </h1>
-    <div class="lg:max-w-5xl mx-auto lg:grid lg:grid-cols-8 lg:gap-5">
+    <div class="md:max-w-5xl mx-auto md:grid md:grid-cols-8 md:gap-5">
       <div class="col-span-2">
-        <!-- <p>
-          ¡Hola! Soy Kenneth, un ingeniero de software y este es mi blog.
-          Actualmente estoy trabajando en algunos proyectos y escribiendo sobre
-          ellos aquí. ¡Siéntete libre de echarles un vistazo!
-        </p> -->
         <Links />
       </div>
       <div class="col-span-6 divide-y *:py-6 first:*:pt-0 last:*:pb-0">

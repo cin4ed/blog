@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import printedCthulhu from "../../assets/images/3d-printed-cthulhu.jpeg";
+import Links from "@components/Links.astro";
+---
+
+<!doctype html>
+<html lang="en" class="bg-background text-foreground antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <title>BetweenFrames</title>
+  </head>
+  <body class="min-h-screen px-4 pb-10 pt-5 md:py-0 md:pb-6 md:space-y-0">
+    <h1
+      class="text-center font-[Gruppo] text-primary text-3xl md:text-[39px] md:py-4 tracking-widest"
+    >
+      Between Frames
+    </h1>
+    <div class="md:max-w-5xl mx-auto md:grid md:grid-cols-8 md:gap-5">
+      <div class="col-span-2">
+        <Links />
+      </div>
+      <div class="col-span-6 space-y-3">
+        <h1 class="text-4xl font-black text-primary">About Me</h1>
+        <p>
+          I'm Kenneth Quintero. I live in Baja California Sur, Mexico with my
+          family and my 3 dogs. I started coding in 2018 when I have to choose a
+          career path. Altough it was a last minute decision, I found out that I
+          really enjoyed this field and I've been learning and coding ever
+          since.
+        </p>
+        <div class="flex gap-4">
+          <div class="flex-1 space-y-3">
+            <p>
+              Beyond coding, I like 3D printing things, occasionally playing
+              with my guitar, reading manga (though I haven't been reading as
+              much lately), and playing video games with friends. I'm also a big
+              fan of horror movies. It's funny because, as a kid, they used to
+              terrify me. Now, I really like diving into the lore, monsters, and
+              stories behind them.
+            </p>
+            <p>
+              But for the most part, I'm finding new things I can create through
+              code.
+            </p>
+            <p>
+              I get anxious when I can’t understand how something works, so I’m
+              constantly learning, figuring out how things operate, and
+              exploring ways to apply that knowledge to other areas.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <Image src={printedCthulhu} alt="3D printed Cthulhu" width="250" />
+            <p class="text-center text-xs">3D printed Cthulhu like creature</p>
+          </div>
+        </div>
+        <p>
+          I think the reason I like programming is that you have to understand
+          what you’re doing to make it work. And I really like that. It’s like
+          solving a puzzle, building something from scratch, and seeing it come
+          to life.
+        </p>
+        <p>
+          But what I like the most, is that it is the real life version of
+          magic. You can create something out of nothing, and make it work the
+          way you want it to. The language you use is like the spell you cast,
+          and the computer is the magic wand. And the best part is that you can
+          share your magic with the world instantly.
+        </p>
+        <h2 class="text-2xl font-black text-primary">Why do I blog?</h2>
+        <p>
+          I blog primarily to document what I’m learning and the projects I’m
+          working on. So I can have a space where I can track my progress, gain
+          new insights, and hopefully get new ideas, all of this while improving
+          my writing and communication skills.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
