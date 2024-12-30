@@ -1,0 +1,33 @@
+---
+import Links from "@components/Links.astro";
+---
+
+<!doctype html>
+<html lang="en" class="bg-background text-foreground antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <title>BetweenFrames</title>
+  </head>
+  <body class="min-h-screen px-4 pb-10 pt-5 md:py-0 md:pb-6 md:space-y-0">
+    <h1
+      class="text-center font-[Gruppo] text-primary text-3xl md:text-[39px] md:py-4 tracking-widest"
+    >
+      Between Frames
+    </h1>
+    <div class="md:max-w-4xl mx-auto md:grid md:grid-cols-8 md:gap-5">
+      <div class="col-span-2">
+        <Links />
+      </div>
+      <div class="col-span-6">
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>
