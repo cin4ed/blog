@@ -5,6 +5,7 @@ de compatibilidad que surgieron al intentar ejecutar un antiguo proyecto en mi n
 Mini M4."
 date: 2024-12-12
 slug: laravel-sail-mac-mini
+status: ready
 ---
 
 # Diagnóstico del Error

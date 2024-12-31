@@ -1,11 +1,9 @@
 ---
 import "@styles/fonts.css";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Post from "@components/Post.astro";
-import Links from "@components/Links.astro";
-
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { getSpanishDate } from "lib/util";
 
 const posts: CollectionEntry<"posts">[] = await getCollection("posts");
 posts.sort(
@@ -15,6 +13,25 @@ posts.sort(
 
 <BaseLayout>
   <div class="col-span-6 divide-y *:py-6 first:*:pt-0 last:*:pb-0">
-    {posts.map(async (post) => <Post post={post} />)}
+    {
+      posts.map(async (post) => (
+        <div class="space-y-4 border-secondary">
+          <div class="space-y-2">
+            <p class="text-zinc-400 text-sm">
+              {getSpanishDate(new Date(post.data.date))}
+            </p>
+            <a class="inline-block text-4xl text-primary font-black cursor-pointer">
+              {post.data.title}
+            </a>
+          </div>
+          <div class="space-y-2">
+            <p>{post.data.description}</p>
+            <a href={`/posts/${post.slug}`} class="inline-block underline underline-offset-2 text-primary px-0.5 hover:no-underline cursor-pointer">
+              Ver más
+            </a>
+          </div>
+        </div>
+      ))
+    }
   </div>
 </BaseLayout>

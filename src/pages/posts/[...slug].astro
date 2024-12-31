@@ -1,10 +1,11 @@
 ---
 import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import PostLayout from "@layouts/PostLayout.astro";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
-  return blogEntries.map((entry) => ({
+  const postEntries = await getCollection("posts");
+  return postEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -14,6 +15,8 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<PostLayout frontmatter={entry.data} title="BetweenFrames - Blog">
-  <Content />
-</PostLayout>
+<BaseLayout>
+  <PostLayout frontmatter={entry.data}>
+    <Content />
+  </PostLayout>
+</BaseLayout>
