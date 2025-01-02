@@ -11,6 +11,7 @@
  * const date = new Date('2023-10-05');
  * console.log(getSpanishDate(date)); // "jueves, 5 de octubre de 2023"
  */
+
 export function getSpanishDate(date: Date): string {
   return date.toLocaleDateString("es-ES", {
     weekday: "long",
@@ -33,8 +34,6 @@ export function getSpanishDate(date: Date): string {
  * const date = new Date('2023-10-05');
  * console.log(getEnglishDate(date)); // "Thursday, October 5, 2023"
  */
-
-
 
 export function getEnglishDate(date: Date): string {
   return date.toLocaleDateString("en-US", {

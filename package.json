@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint --quiet --fix",
+    "lint": "eslint",
     "format": "prettier . --write",
     "prepare": "husky"
   },
@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@eslint/json": "^0.9.0",
+    "@eslint/markdown": "^6.2.1",
     "@typescript-eslint/parser": "^8.19.0",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",

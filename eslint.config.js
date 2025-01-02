@@ -1,22 +1,33 @@
 import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-import eslintPluginAstro from "eslint-plugin-astro";
-import eslintTypescriptParser from "@typescript-eslint/parser";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import js from "@eslint/js";
+import json from "@eslint/json";
+import ts from "typescript-eslint";
+// import astro from "eslint-plugin-astro";
+import tsParser from "@typescript-eslint/parser";
+import prettier from "eslint-plugin-prettier/recommended";
+import markdown from "@eslint/markdown";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { ignores: ["node_modules", ".astro", "dist"] },
-  { files: ["**/*.{js,mjs,cjs,ts}"] },
+  { ignores: ["node_modules", ".astro", "dist", ".vscode"] },
+  ...markdown.configs.recommended,
   {
     languageOptions: {
       globals: globals.browser,
-      parser: eslintTypescriptParser,
+      parser: tsParser,
     },
   },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  eslintPluginPrettierRecommended,
-  ...eslintPluginAstro.configs.recommended,
+  {
+    files: ["**/*.json"],
+    ignores: ["**/package-lock.json"],
+    language: "json/json",
+    ...json.configs.recommended,
+  },
+  {
+    files: ["**/*.js", "**/*.mjs"],
+    ...js.configs.recommended,
+  },
+  ...ts.configs.recommended,
+  prettier,
+  // ...astro.configs.recommended,
 ];
