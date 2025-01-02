@@ -15,21 +15,28 @@ import Links from "@components/Links.astro";
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <title>BetweenFrames</title>
+    <script>
+      const showMenuBtn = document.getElementById("show-menu-btn");
+      const navBar = document.getElementById("nav-bar");
+      showMenuBtn!.addEventListener("click", () => {
+        navBar!.classList.toggle("hidden");
+      });
+    </script>
   </head>
   <body class="min-h-screen">
     <header
-      class="sticky top-0 md:static px-4 bg-background border-b md:border-none border-secondary z-10 border-opactiy-80"
+      class="border-opactiy-80 sticky top-0 z-10 border-b border-secondary bg-background px-4 md:static md:border-none"
     >
-      <div class="py-3 flex justify-between items-center md:block">
+      <div class="flex items-center justify-between py-3 md:block">
         <h1
-          class="md:text-center font-[Gruppo] text-primary text-3xl tracking-widest"
+          class="font-[Gruppo] text-3xl tracking-widest text-primary md:text-center"
         >
           Between Frames
         </h1>
         <button
           id="show-menu-btn"
           type="button"
-          class="border border-secondary border-opacity-80 active:bg-zinc-900 p-2 rounded-md md:hidden"
+          class="rounded-md border border-secondary border-opacity-80 p-2 active:bg-zinc-900 md:hidden"
         >
           <svg
             class="text-primary"
@@ -55,7 +62,7 @@ import Links from "@components/Links.astro";
       </div>
     </header>
     <div
-      class="mt-5 md:mt-2 px-4 pb-10 md:max-w-4xl mx-auto md:grid md:grid-cols-8 md:gap-5"
+      class="mx-auto mt-5 px-4 pb-10 md:mt-2 md:grid md:max-w-4xl md:grid-cols-8 md:gap-5"
     >
       <div class="col-span-2 hidden md:block">
         <div class="md:sticky md:top-5">
@@ -66,13 +73,5 @@ import Links from "@components/Links.astro";
         <slot />
       </div>
     </div>
-    <script>
-      const showMenuBtn = document.getElementById("show-menu-btn");
-      const navBar = document.getElementById("nav-bar");
-
-      showMenuBtn!.addEventListener("click", () => {
-        navBar!.classList.toggle("hidden");
-      });
-    </script>
   </body>
 </html>

@@ -7,7 +7,7 @@ import { getSpanishDate } from "lib/util";
 
 const posts: CollectionEntry<"posts">[] = await getCollection("posts");
 posts.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 );
 ---
 
@@ -17,16 +17,19 @@ posts.sort(
       posts.map(async (post) => (
         <div class="space-y-4 border-secondary">
           <div class="space-y-2">
-            <p class="text-zinc-400 text-sm">
+            <p class="text-sm text-zinc-400">
               {getSpanishDate(new Date(post.data.date))}
             </p>
-            <a class="inline-block text-4xl text-primary font-black cursor-pointer">
+            <a class="inline-block cursor-pointer text-4xl font-black text-primary">
               {post.data.title}
             </a>
           </div>
           <div class="space-y-2">
             <p>{post.data.description}</p>
-            <a href={`/posts/${post.slug}`} class="inline-block underline underline-offset-2 text-primary px-0.5 hover:no-underline cursor-pointer">
+            <a
+              href={`/posts/${post.slug}`}
+              class="inline-block cursor-pointer px-0.5 text-primary underline underline-offset-2 hover:no-underline"
+            >
               Ver más
             </a>
           </div>

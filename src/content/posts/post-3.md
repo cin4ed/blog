@@ -8,4 +8,4 @@ status: pending
 
 # Baby Steps
 
-Everything has a 
+Everything has a
