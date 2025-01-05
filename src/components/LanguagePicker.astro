@@ -1,0 +1,13 @@
+---
+import { languages } from "@i18n/ui";
+---
+
+<div>
+  {
+    Object.entries(languages).map(([lang, label]) => (
+      <a href={`/${lang}`} class="inline-block">
+        {label}
+      </a>
+    ))
+  }
+</div>

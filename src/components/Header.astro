@@ -1,17 +1,18 @@
 ---
-interface Props {
-  title?: string;
-}
-
-const { title = "BetweenFrames" } = Astro.props;
+import HamburgerButton from "@components/HamburgerButton.astro";
+import MobileNavBar from "@components/MobileNavBar.astro";
 ---
 
-<meta charset="UTF-8" />
-<meta name="description" content="Astro description" />
-<meta name="viewport" content="width=device-width" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="manifest" href="/site.webmanifest" />
-<meta name="generator" content={Astro.generator} />
-<title>{title}</title>
+<header
+  class="border-opactiy-80 sticky top-0 z-10 border-b border-secondary bg-background px-4 md:static md:border-none"
+>
+  <div class="flex items-center justify-between py-3 md:block">
+    <h1
+      class="font-[Gruppo] text-3xl tracking-widest text-primary md:text-center"
+    >
+      Between Frames
+    </h1>
+    <HamburgerButton />
+  </div>
+  <MobileNavBar />
+</header>
