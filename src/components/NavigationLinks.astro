@@ -37,7 +37,7 @@ const t = useTranslations(lang);
       {t("nav.blog")}
     </a> -->
     <a
-      href={getRelativeLocaleUrl(lang, "rss.xml")}
+      href={getRelativeLocaleUrl(lang, "rss.xml").slice(0, -1)}
       class="cursor-pointer border-secondary px-2 transition-all duration-700 ease-out hover:bg-secondary hover:underline"
     >
       RSS

@@ -1,6 +1,10 @@
 ---
 import HamburgerButton from "@components/HamburgerButton.astro";
 import MobileNavBar from "@components/MobileNavBar.astro";
+import { getLangFromUrl } from "@i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <header
@@ -10,7 +14,7 @@ import MobileNavBar from "@components/MobileNavBar.astro";
     <h1
       class="font-[Gruppo] text-3xl tracking-widest text-primary md:text-center"
     >
-      Between Frames
+      <a href={getRelativeLocaleUrl(lang)}> Between Frames </a>
     </h1>
     <HamburgerButton />
   </div>
