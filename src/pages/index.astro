@@ -12,17 +12,17 @@ posts.sort(
 ---
 
 <NBaseLayout>
-  <div class="col-span-6 divide-y divide-stone-400/50 font-['Crimson_Pro'] text-stone-700 *:py-6 first:*:pt-0 last:*:pb-0">
+  <div
+    class="col-span-6 divide-y divide-stone-400/50 font-['Crimson_Pro'] text-stone-700 *:py-6 first:*:pt-0 last:*:pb-0"
+  >
     {
       posts.map(async (post) => (
         <div class="space-y-4">
           <div class="space-y-2">
-            <p class="text-lg">
-              {getEnglishDate(new Date(post.data.date))}
-            </p>
-            <a 
+            <p class="text-lg">{getEnglishDate(new Date(post.data.date))}</p>
+            <a
               href={`/posts/${post.slug}`}
-              class="inline-block cursor-pointer text-5xl font-semibold tracking-tight leading-[1.2]"
+              class="inline-block cursor-pointer text-5xl font-semibold leading-[1.2] tracking-tight"
             >
               {post.data.title}
             </a>

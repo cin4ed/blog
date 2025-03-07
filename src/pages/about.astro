@@ -6,7 +6,9 @@ import printedCthulhu from "../../assets/images/3d-printed-cthulhu.jpeg";
 
 <NBaseLayout>
   <div class="space-y-4 font-['Crimson_Pro'] text-stone-700">
-    <h1 class="text-5xl font-semibold tracking-tight leading-[1.2]">About Me</h1>
+    <h1 class="text-5xl font-semibold leading-[1.2] tracking-tight">
+      About Me
+    </h1>
     <p class="text-[1.2rem]">
       I'm Kenneth Quintero. I live in Baja California Sur, Mexico with my family
       and my 3 dogs. I started coding in 2018 when I have to choose a career
@@ -14,8 +16,15 @@ import printedCthulhu from "../../assets/images/3d-printed-cthulhu.jpeg";
       enjoyed this field and I've been learning and coding ever since.
     </p>
     <div class="md:clearfix">
-      <div class="mx-auto mb-6 space-y-2 md:float-right md:ml-8 md:mb-4 md:w-auto">
-        <Image src={printedCthulhu} alt="3D printed Cthulhu" width="250" class="mx-auto" />
+      <div
+        class="mx-auto mb-6 space-y-2 md:float-right md:mb-4 md:ml-8 md:w-auto"
+      >
+        <Image
+          src={printedCthulhu}
+          alt="3D printed Cthulhu"
+          width="250"
+          class="mx-auto"
+        />
         <p class="text-center text-sm">3D printed Cthulhu like creature</p>
       </div>
       <div class="space-y-4">
