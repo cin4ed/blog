@@ -8,28 +8,89 @@ const parsedDate = getEnglishDate(new Date(date));
 ---
 
 <div class="post space-y-4">
-  <div class="space-y-2">
-    <p class="text-sm text-zinc-400">{parsedDate}</p>
-    <h1 class="text-4xl font-black text-primary">{title}</h1>
+  <div class="post__header space-y-3">
+    <h1 class="post__title">{title}</h1>
+    <div class="flex items-center justify-between">
+      <p class="post__date">By <span class="underline">Kenneth Quintero</span> • {parsedDate}</p>
+      <button
+        id="share-button"
+        class="share-button flex items-center gap-2 rounded-lg bg-stone-100 px-3 py-1.5 text-sm transition-colors hover:bg-stone-200"
+        aria-label="Share this post"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+        Share
+      </button>
+    </div>
   </div>
+  <hr class="post__divider" />
   <div class="post__content space-y-4">
     <slot />
   </div>
 </div>
 
+<script>
+  const shareButton = document.getElementById('share-button');
+  
+  shareButton?.addEventListener('click', async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: document.title,
+          url: window.location.href,
+        });
+      } else {
+        // Fallback for browsers that don't support the Web Share API
+        await navigator.clipboard.writeText(window.location.href);
+        const originalText = shareButton.innerHTML;
+        shareButton.innerHTML = 'Copied!';
+        setTimeout(() => {
+          shareButton.innerHTML = originalText;
+        }, 2000);
+      }
+    } catch (err) {
+      console.error('Error sharing:', err);
+    }
+  });
+</script>
+
 <style is:global>
+  .post {
+    @apply font-['Crimson_Pro'];
+    @apply text-stone-700;
+  }
+
+  .post__title {
+    @apply text-5xl;
+    @apply text-balance;
+    @apply tracking-tight;
+    @apply leading-[1.2];
+    @apply font-semibold;
+  }
+
+  .post__date {
+    @apply text-lg;
+  }
+
+  .post__divider {
+    @apply border-stone-400;
+    @apply border-t-2;
+  }
+
+  .post__content {
+    @apply text-[1.2rem];
+  }
+
   .post__content > img {
     @apply w-full;
     @apply object-contain;
   }
 
-  .post__content > h1 {
-    @apply text-2xl;
-    @apply font-bold;
-  }
-
   .post__content > h2 {
-    @apply text-xl;
+    @apply text-[2rem];
     @apply font-semibold;
   }
 

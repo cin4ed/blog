@@ -1,9 +1,9 @@
 ---
 import "@styles/fonts.css";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import NBaseLayout from "@layouts/NBaseLayout.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { getSpanishDate } from "lib/util";
+import { getEnglishDate } from "lib/util";
 
 const posts: CollectionEntry<"posts">[] = await getCollection("posts");
 posts.sort(
@@ -11,30 +11,33 @@ posts.sort(
 );
 ---
 
-<BaseLayout>
-  <div class="col-span-6 divide-y *:py-6 first:*:pt-0 last:*:pb-0">
+<NBaseLayout>
+  <div class="col-span-6 divide-y divide-stone-400/50 font-['Crimson_Pro'] text-stone-700 *:py-6 first:*:pt-0 last:*:pb-0">
     {
       posts.map(async (post) => (
-        <div class="space-y-4 border-secondary">
+        <div class="space-y-4">
           <div class="space-y-2">
-            <p class="text-sm text-zinc-400">
-              {getSpanishDate(new Date(post.data.date))}
+            <p class="text-lg">
+              {getEnglishDate(new Date(post.data.date))}
             </p>
-            <a class="inline-block cursor-pointer text-4xl font-black text-primary">
+            <a 
+              href={`/posts/${post.slug}`}
+              class="inline-block cursor-pointer text-5xl font-semibold tracking-tight leading-[1.2]"
+            >
               {post.data.title}
             </a>
           </div>
           <div class="space-y-2">
-            <p>{post.data.description}</p>
+            <p class="text-[1.2rem]">{post.data.description}</p>
             <a
               href={`/posts/${post.slug}`}
               class="inline-block cursor-pointer px-0.5 text-primary underline underline-offset-2 hover:no-underline"
             >
-              Ver más
+              Read more
             </a>
           </div>
         </div>
       ))
     }
   </div>
-</BaseLayout>
+</NBaseLayout>
