@@ -1,10 +1,14 @@
 ---
-import { getEnglishDate } from "@lib/util";
+import { getEnglishDate, getSpanishDate } from "@utils/date";
 
-const { frontmatter } = Astro.props;
-const { title, date } = frontmatter;
+const { postData } = Astro.props;
 
-const parsedDate = getEnglishDate(new Date(date));
+const { title, pubDate } = postData;
+
+const parsedDate =
+  postData.lang === "en"
+    ? getEnglishDate(new Date(pubDate))
+    : getSpanishDate(new Date(pubDate));
 ---
 
 <div class="post space-y-4">

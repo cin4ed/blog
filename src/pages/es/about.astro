@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import printedCthulhu from "@assets/images/3d-printed-cthulhu.jpeg";
+---
+
+<BaseLayout>
+  <div class="space-y-3">
+    <h1 class="text-4xl font-black text-primary">Sobre Mí</h1>
+    <p>
+      Me llamo Kenneth. Vivo en Baja California Sur, México, con mi familia y
+      mis 3 perros. Empecé a programar en 2018 cuando tuve que elegir una
+      carrera profesional. Aunque fue una decisión de último minuto, descubrí
+      que realmente disfrutaba este campo y he estado aprendiendo y programando
+      desde entonces.
+    </p>
+    <div class="flex flex-col items-center gap-5 md:flex-row md:items-start">
+      <div class="flex-1 space-y-3">
+        <p>
+          Más allá de programar, me gusta imprimir cosas en 3D, tocar mi
+          guitarra de vez en cuando, leer manga (aunque últimamente no he leído
+          tanto) y jugar videojuegos con amigos. También soy un gran fan de las
+          películas de ciencia ficción y terror. Es curioso porque, de niño,
+          solían aterrorizarme.
+        </p>
+        <p>
+          Pero, la mayor parte del tiempo estoy encontrando nuevas cosas que
+          puedo crear a través del código.
+        </p>
+        <p>
+          Suelo ponerme algo ansioso cuando no puedo entender cómo funciona
+          algo, así que constantemente estoy aprendiendo, descubriendo cómo
+          operan las cosas y explorando formas de aplicar ese conocimiento en
+          otras áreas.
+        </p>
+      </div>
+      <div class="space-y-4">
+        <Image src={printedCthulhu} alt="Cthulhu impreso en 3D" width="250" />
+        <p class="text-center text-xs">
+          Criatura similar a Cthulhu impresa en 3D
+        </p>
+      </div>
+    </div>
+    <p>
+      Creo que la razón por la que me gusta programar es porque necesitas
+      entender lo que estás haciendo para que funcione. Y eso realmente me
+      encanta. Es como resolver un rompecabezas, construir algo desde cero y ver
+      cómo cobra vida.
+    </p>
+    <p>
+      Pero lo que más me gusta, es que es la versión real de la magia. Puedes
+      crear algo de la nada y hacer que funcione como tú quieras. El lenguaje
+      que usas es como el hechizo que lanzas, y la computadora es la varita
+      mágica. Y lo mejor de todo es que puedes compartir tu magia con el mundo
+      al instante.
+    </p>
+    <h2 class="text-2xl font-black text-primary">
+      ¿Por qué escribo en mi blog?
+    </h2>
+    <p>
+      Escribo en mi blog principalmente para documentar lo que estoy aprendiendo
+      y los proyectos en los que estoy trabajando. Así puedo tener un espacio
+      donde rastrear mi progreso, obtener nuevas ideas y, con suerte, inspirarme
+      más, todo mientras mejoro mis habilidades de escritura y comunicación.
+    </p>
+  </div>
+</BaseLayout>
