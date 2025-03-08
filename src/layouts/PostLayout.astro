@@ -4,10 +4,10 @@ import LanguagePicker from "@components/LanguagePicker.astro";
 
 const { post } = Astro.props;
 
-const { title, pubDate, translationSlug } = post.data;
+const { title, pubDate, translationSlug, lang } = post.data;
 
 const parsedDate =
-  post.lang === "en"
+  lang === "en"
     ? getEnglishDate(new Date(pubDate))
     : getSpanishDate(new Date(pubDate));
 ---
