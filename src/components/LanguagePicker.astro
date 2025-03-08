@@ -10,10 +10,10 @@ interface Props {
 const { translationSlug } = Astro.props;
 const url = Astro.url;
 const currentLang = getLangFromUrl(url);
-const otherLang = currentLang === 'en' ? 'es' : 'en';
+const otherLang = currentLang === "en" ? "es" : "en";
 
 // If we have a translation slug, use it directly
-const otherLangPath = translationSlug 
+const otherLangPath = translationSlug
   ? `/${otherLang}/blog/${translationSlug}`
   : null;
 
@@ -21,13 +21,12 @@ const otherLangPath = translationSlug
 if (!otherLangPath) return null;
 ---
 
-
 <Button>
-<a
-  href={otherLangPath}
-  class="flex items-center gap-2"
-  title={`Switch to ${languages[otherLang]}`}
->
-  <span>{languages[otherLang]}</span>
-</a>
+  <a
+    href={otherLangPath}
+    class="flex items-center gap-2"
+    title={`Switch to ${languages[otherLang]}`}
+  >
+    <span>{languages[otherLang]}</span>
+  </a>
 </Button>

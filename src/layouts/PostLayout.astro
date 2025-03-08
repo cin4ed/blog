@@ -17,7 +17,9 @@ const parsedDate =
     <h1 class="post__title">{title}</h1>
     <div class="flex items-center justify-between">
       <p class="post__date">
-        By <a href="/about" class="underline hover:no-underline transition-all"><span>Kenneth Quintero</span></a> • {parsedDate}
+        By <a href="/about" class="underline transition-all hover:no-underline"
+          ><span>Kenneth Quintero</span></a
+        > • {parsedDate}
       </p>
       <div class="flex items-center gap-2">
         <LanguagePicker translationSlug={translationSlug} />

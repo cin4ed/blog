@@ -13,7 +13,7 @@ const { href, class: className } = Astro.props;
       href={href}
       style="box-shadow: rgba(255, 255, 255, 0.25) 0px 2px 0px 0px inset, rgba(51, 92, 117, 0.5) 0px 2px 4px 0px;"
       class:list={[
-        "inline-flex items-center gap-1 rounded-xl bg-gradient-to-b from-blumine-600 to-blumine-700 px-6 py-1 text-lg text-white transition-all duration-200 hover:from-blumine-700 hover:to-blumine-800 hover:border-blumine-900 border border-blumine-800 active:from-blumine-800 active:to-blumine-900 active:border-blumine-950",
+        "inline-flex items-center gap-1 rounded-xl border border-blumine-800 bg-gradient-to-b from-blumine-600 to-blumine-700 px-6 py-1 text-lg text-white transition-all duration-200 hover:border-blumine-900 hover:from-blumine-700 hover:to-blumine-800 active:border-blumine-950 active:from-blumine-800 active:to-blumine-900",
         className,
       ]}
     >
@@ -23,11 +23,12 @@ const { href, class: className } = Astro.props;
     <button
       style="box-shadow: rgba(255, 255, 255, 0.25) 0px 2px 0px 0px inset, rgba(51, 92, 117, 0.5) 0px 2px 4px 0px;"
       class:list={[
-        "inline-flex items-center gap-1 rounded-xl bg-gradient-to-b from-blumine-600 to-blumine-700 px-6 py-1 text-lg text-white transition-all duration-200 hover:from-blumine-700 hover:to-blumine-800 hover:border-blumine-900 border border-blumine-800 active:from-blumine-800 active:to-blumine-900 active:border-blumine-950",
+        "inline-flex items-center gap-1 rounded-xl border border-blumine-800 bg-gradient-to-b from-blumine-600 to-blumine-700 px-6 py-1 text-lg text-white transition-all duration-200 hover:border-blumine-900 hover:from-blumine-700 hover:to-blumine-800 active:border-blumine-950 active:from-blumine-800 active:to-blumine-900",
         className,
       ]}
     >
       <slot />
     </button>
   )
-} 
+}
+
