@@ -1,12 +1,13 @@
 ---
 import { getEnglishDate, getSpanishDate } from "@utils/date";
+import LanguagePicker from "@components/LanguagePicker.astro";
 
-const { postData } = Astro.props;
+const { post } = Astro.props;
 
-const { title, pubDate } = postData;
+const { title, pubDate, translationSlug } = post.data;
 
 const parsedDate =
-  postData.lang === "en"
+  post.lang === "en"
     ? getEnglishDate(new Date(pubDate))
     : getSpanishDate(new Date(pubDate));
 ---
@@ -16,30 +17,33 @@ const parsedDate =
     <h1 class="post__title">{title}</h1>
     <div class="flex items-center justify-between">
       <p class="post__date">
-        By <span class="underline">Kenneth Quintero</span> • {parsedDate}
+        By <a href="/about" class="underline hover:no-underline transition-all"><span>Kenneth Quintero</span></a> • {parsedDate}
       </p>
-      <button
-        id="share-button"
-        class="share-button flex items-center gap-2 rounded-lg bg-stone-100 px-3 py-1.5 text-sm transition-colors hover:bg-stone-200"
-        aria-label="Share this post"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+      <div class="flex items-center gap-2">
+        <LanguagePicker translationSlug={translationSlug} />
+        <button
+          id="share-button"
+          class="share-button flex items-center gap-2 rounded-lg bg-stone-100 px-3 py-1.5 text-sm transition-colors hover:bg-stone-200"
+          aria-label="Share this post"
         >
-          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-          <polyline points="16 6 12 2 8 6"></polyline>
-          <line x1="12" y1="2" x2="12" y2="15"></line>
-        </svg>
-        Share
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+            <polyline points="16 6 12 2 8 6"></polyline>
+            <line x1="12" y1="2" x2="12" y2="15"></line>
+          </svg>
+          Share
+        </button>
+      </div>
     </div>
   </div>
   <hr class="post__divider" />

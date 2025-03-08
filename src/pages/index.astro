@@ -1,17 +1,16 @@
 ---
 import "@styles/fonts.css";
-import NBaseLayout from "@layouts/NBaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { getEnglishDate } from "lib/util";
 
-const posts: CollectionEntry<"posts">[] = await getCollection("posts");
+const posts: CollectionEntry<"blog">[] = await getCollection("blog", ({ data }) => data.lang === "en");
 posts.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
 );
 ---
 
-<NBaseLayout>
+<BaseLayout>
   <div
     class="col-span-6 divide-y divide-stone-400/50 font-['Crimson_Pro'] text-stone-700 *:py-6 first:*:pt-0 last:*:pb-0"
   >
@@ -19,25 +18,29 @@ posts.sort(
       posts.map(async (post) => (
         <div class="space-y-4">
           <div class="space-y-2">
-            <p class="text-lg">{getEnglishDate(new Date(post.data.date))}</p>
+            <p class="text-lg">{post.data.pubDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}</p>
             <a
-              href={`/posts/${post.slug}`}
+              href={`/en/blog/${post.id}`}
               class="inline-block cursor-pointer text-5xl font-semibold leading-[1.2] tracking-tight"
             >
               {post.data.title}
             </a>
           </div>
-          <div class="space-y-2">
+          <div class="space-y-3">
             <p class="text-[1.2rem]">{post.data.description}</p>
             <a
-              href={`/posts/${post.slug}`}
-              class="inline-block cursor-pointer px-0.5 text-primary underline underline-offset-2 hover:no-underline"
+              href={`/en/blog/${post.id}`}
+              class="inline-flex items-center gap-2 rounded-lg bg-stone-100 px-3 py-1.5 text-normal transition-colors hover:bg-stone-200"
             >
-              Read more
+              Read more <span>→</span>
             </a>
           </div>
         </div>
       ))
     }
   </div>
-</NBaseLayout>
+</BaseLayout>

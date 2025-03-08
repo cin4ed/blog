@@ -7,15 +7,14 @@ const postSchema = z.object({
   pubDate: z.coerce.date(),
   draft: z.boolean(),
   lang: z.enum(["en", "es"]),
+  translationSlug: z.string().optional(),
 });
 
-const postCollection = defineCollection({
+const blog = defineCollection({
   loader: glob({ pattern: "{en,es}/posts/*.md", base: "./src/content" }),
   schema: postSchema,
 });
 
-export const collections = {
-  posts: postCollection,
-};
+export const collections = { blog };
 
 export type Post = z.infer<typeof postSchema>;

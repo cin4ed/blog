@@ -1,6 +1,7 @@
 ---
 lang: "en"
 slug: "solving-laravel-issues-on-my-mac-mini-m4"
+translationSlug: "resolviendo-problemas-con-laravel-sail-en-mi-mac-mini-m4"
 title: "Solving Laravel Sail Issues on My Mac Mini M4"
 description:
   "In this post, I discuss Laravel Sail and how I resolved some compatibility issues when

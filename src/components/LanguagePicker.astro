@@ -1,13 +1,33 @@
 ---
 import { languages } from "@i18n/ui";
+import { getLangFromUrl } from "@i18n/utils";
+import Button from "@components/Buttton.astro";
+
+interface Props {
+  translationSlug?: string;
+}
+
+const { translationSlug } = Astro.props;
+const url = Astro.url;
+const currentLang = getLangFromUrl(url);
+const otherLang = currentLang === 'en' ? 'es' : 'en';
+
+// If we have a translation slug, use it directly
+const otherLangPath = translationSlug 
+  ? `/${otherLang}/blog/${translationSlug}`
+  : null;
+
+// Only show the language picker if we have a translation
+if (!otherLangPath) return null;
 ---
 
-<div>
-  {
-    Object.entries(languages).map(([lang, label]) => (
-      <a href={`/${lang}`} class="inline-block">
-        {label}
-      </a>
-    ))
-  }
-</div>
+
+<Button>
+<a
+  href={otherLangPath}
+  class="flex items-center gap-2"
+  title={`Switch to ${languages[otherLang]}`}
+>
+  <span>{languages[otherLang]}</span>
+</a>
+</Button>

@@ -1,6 +1,7 @@
 ---
 lang: "es"
 slug: "resolviendo-problemas-con-laravel-sail-en-mi-mac-mini-m4"
+translationSlug: "solving-laravel-issues-on-my-mac-mini-m4"
 title: "Resolviendo Problemas Con Laravel Sail en mi Mac Mini M4"
 description: "En este post hablo acerca de Laravel Sail y cómo solucioné algunos problemas
 de compatibilidad que surgieron al intentar ejecutar un antiguo proyecto en mi nueva Mac 

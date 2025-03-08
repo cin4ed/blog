@@ -14,6 +14,7 @@ export const ui = {
     "nav.about": "About",
     "nav.projects": "Projects",
     "nav.blog": "Blog",
+    "nav.contact_page": "Contact",
   },
   es: {
     "nav.navigation": "Apartados",
@@ -23,5 +24,6 @@ export const ui = {
     "nav.about": "Acerca de mi",
     "nav.projects": "Proyectos",
     "nav.blog": "Blog",
+    "nav.contact_page": "Contacto",
   },
 } as const;
