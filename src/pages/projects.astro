@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import workyScreenshot1 from "@assets/images/worky-screenshot-1.png";
 ---
 
 <BaseLayout>
@@ -16,7 +18,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
         <div
           class="flex h-full flex-col space-y-3 rounded-lg border border-stone-200 p-4 transition-all duration-300 hover:border-stone-300 hover:bg-stone-50"
         >
-          <div class="h-40 rounded-md bg-stone-100"></div>
+          <Image src={workyScreenshot1} alt="Worky Screenshot" class="w-full h-full object-cover rounded-lg" />
           <h2 class="text-[2rem] font-semibold">Worky</h2>
           <p class="flex-grow text-[1.2rem]">
             Worky is a macOS app that lets you create file groups and bring them
