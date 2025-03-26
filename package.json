@@ -10,8 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint",
-    "format": "prettier . --write",
-    "prepare": "husky"
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.11",
