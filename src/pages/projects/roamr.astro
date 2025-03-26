@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import spinningGlobe from "@assets/images/spinning-globe.gif";
 ---
 
 <BaseLayout>
@@ -46,11 +47,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
     </div>
 
     <div class="aspect-video w-full rounded-lg bg-stone-100">
-      <!-- <Image
-        src={roamrScreenshot1}
-        alt="Roamr Screenshot"
-        class="h-full w-full rounded-lg object-cover"
-      /> -->
+      <img
+        src={spinningGlobe.src}
+        alt="Spinning Globe"
+        class="object-fit h-full w-full rounded-lg"
+      />
     </div>
 
     <div class="space-y-6">
