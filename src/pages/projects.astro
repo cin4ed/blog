@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import workyScreenshot1 from "@assets/images/worky-screenshot-1.png";
+import roamrScreenshot1 from "@assets/images/roamr-screenshot-1.webp";
 ---
 
 <BaseLayout>
@@ -18,11 +19,13 @@ import workyScreenshot1 from "@assets/images/worky-screenshot-1.png";
         <div
           class="flex h-full flex-col space-y-3 rounded-lg border border-stone-200 p-4 transition-all duration-300 hover:border-stone-300 hover:bg-stone-50"
         >
-          <Image
-            src={workyScreenshot1}
-            alt="Worky Screenshot"
-            class="h-full w-full rounded-lg object-cover"
-          />
+          <div class="aspect-video">
+            <Image
+              src={workyScreenshot1}
+              alt="Worky Screenshot"
+              class="h-full w-full rounded-lg object-cover"
+            />
+          </div>
           <h2 class="text-[2rem] font-semibold">Worky</h2>
           <p class="flex-grow text-[1.2rem]">
             Worky is a macOS app that lets you create file groups and bring them
@@ -34,7 +37,13 @@ import workyScreenshot1 from "@assets/images/worky-screenshot-1.png";
         <div
           class="flex h-full flex-col space-y-3 rounded-lg border border-stone-200 p-4 transition-all duration-300 hover:border-stone-300 hover:bg-stone-50"
         >
-          <div class="h-40 rounded-md bg-stone-100"></div>
+          <div class="aspect-video">
+            <Image
+              src={roamrScreenshot1}
+              alt="Roamr Screenshot"
+              class="h-full w-full rounded-lg object-cover"
+            />
+          </div>
           <h2 class="text-[2rem] font-semibold">Roamr</h2>
           <p class="flex-grow text-[1.2rem]">
             Roamr is an urbex app that helps you find and share abandoned places
