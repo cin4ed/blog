@@ -6,7 +6,7 @@ description:
   "Notes about shaders, what they are, how they work, and how they evolved over time. If
   you are a interested in shaders, you may find this post useful. To the GPU and beyond!"
 pubDate: 2025-03-12
-draft: false
+draft: true
 ---
 
 Shaders are small programs that run on your GPU rather than your CPU. They are written in
