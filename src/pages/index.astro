@@ -9,7 +9,7 @@ import roamrScreenshot1 from "@assets/images/roamr-screenshot-1.webp";
 
 const posts: CollectionEntry<"blog">[] = await getCollection(
   "blog",
-  ({ data }) => data.lang === "en"
+  ({ data }) => data.lang === "en" && data.draft !== true
 );
 
 posts.sort(
