@@ -6,6 +6,7 @@ import type { CollectionEntry } from "astro:content";
 import { getEnglishDate } from "@utils/date";
 import workyScreenshot1 from "@assets/images/worky-screenshot-1.png";
 import roamrScreenshot1 from "@assets/images/roamr-screenshot-1.webp";
+import profilePicture from "@assets/images/profile-picture.jpg";
 
 const posts: CollectionEntry<"blog">[] = await getCollection(
   "blog",
@@ -57,17 +58,24 @@ const projects = [
 ---
 
 <BaseLayout>
-  <div class="space-y-10 font-['Crimson_Pro'] text-stone-700">
+  <div class="space-y-10 font-['Crimson_Pro'] text-stone-700 text-lg">
     <div>
-      <h2 class="bg-amber-900/15 px-2 text-lg">About me</h2>
+      <h2 class="bg-amber-900/15 px-2 text-xl">About me</h2>
       <hr />
-      <p class="text-md mt-4">
-        Hi, I'm Kenneth and this is BetweenFrames, my personal website. Here you
-        can find a list of projects I've worked on and some blog posts written
+      <div class="flex items-center gap-6 mt-4">
+      <img
+          src={profilePicture.src}
+          alt="Profile Picture"
+          class="h-32 w-32 rounded-full"
+        />
+        <div>
+        <p class="text-md mt-1">
+          Hi, I'm Kenneth and this is BetweenFrames, my personal website. Here you
+          can find a list of projects I've worked on and some blog posts written
         by me. Feel free to take a look. If you want to get in touch, you can
         find me on the following platforms:
       </p>
-      <div class="mt-4 flex flex-wrap gap-4">
+      <div class="mt-4 flex flex-wrap gap-4 text-base">
         {
           social.map((item) => (
             <a href={item.link} class="flex items-center gap-2">
@@ -77,11 +85,14 @@ const projects = [
           ))
         }
       </div>
+
+        </div>
+      </div>
     </div>
     <div>
-      <h2 class="bg-amber-900/15 px-2 text-lg">Projects</h2>
+      <h2 class="bg-amber-900/15 px-2 text-xl">Projects</h2>
       <hr />
-      <div class="mt-4 grid grid-cols-2 gap-5 md:grid-cols-4">
+      <div class="mt-4 grid grid-cols-2 gap-5 md:grid-cols-3">
         {
           projects.map((project) => (
             <a href={project.link} class="block space-y-2">
@@ -91,15 +102,15 @@ const projects = [
                 class="h-32 w-full rounded-lg object-cover"
                 style="user-drag: none;"
               />
-              <h3 class="text-lg">{project.title}</h3>
-              <p class="text-sm">{project.description}</p>
+              <h3 class="text-xl">{project.title}</h3>
+              <p class="text-base">{project.description}</p>
             </a>
           ))
         }
       </div>
     </div>
     <div>
-      <h2 class="bg-amber-900/15 px-2 text-lg">Blog</h2>
+      <h2 class="bg-amber-900/15 px-2 text-xl">Blog</h2>
       <hr />
       <div class="mt-4 divide-y divide-stone-200">
         {
