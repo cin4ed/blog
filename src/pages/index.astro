@@ -1,11 +1,12 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 import { getEnglishDate } from "@utils/date";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
 import workyScreenshot1 from "@assets/images/worky-screenshot-1.png";
 import roamrScreenshot1 from "@assets/images/roamr-screenshot-1.webp";
+import bassetaScreenshot1 from "@assets/images/basseta-screenshot-1.png";
 import profilePicture from "@assets/images/profile-picture.jpg";
 
 const posts: CollectionEntry<"blog">[] = await getCollection(
@@ -54,38 +55,43 @@ const projects = [
     link: "/projects/roamr",
     image: roamrScreenshot1,
   },
+  {
+    title: "Basseta",
+    description: "A visual node-based audio editor.",
+    link: "/projects/basseta",
+    image: bassetaScreenshot1,
+  },
 ];
 ---
 
 <BaseLayout>
-  <div class="space-y-10 font-['Crimson_Pro'] text-stone-700 text-lg">
+  <div class="space-y-10 font-['Crimson_Pro'] text-lg text-stone-700">
     <div>
       <h2 class="bg-amber-900/15 px-2 text-xl">About me</h2>
       <hr />
-      <div class="flex items-center gap-6 mt-4">
-      <img
+      <div class="mt-4 flex items-center gap-6">
+        <img
           src={profilePicture.src}
           alt="Profile Picture"
           class="h-32 w-32 rounded-full"
         />
         <div>
-        <p class="text-md mt-1">
-          Hi, I'm Kenneth and this is BetweenFrames, my personal website. Here you
-          can find a list of projects I've worked on and some blog posts written
-        by me. Feel free to take a look. If you want to get in touch, you can
-        find me on the following platforms:
-      </p>
-      <div class="mt-4 flex flex-wrap gap-4 text-base">
-        {
-          social.map((item) => (
-            <a href={item.link} class="flex items-center gap-2">
-              <i class={item.iconClass} />
-              {item.name}
-            </a>
-          ))
-        }
-      </div>
-
+          <p class="text-md mt-1">
+            Hi, I'm Kenneth and this is BetweenFrames, my personal website. Here
+            you can find a list of projects I've worked on and some blog posts
+            written by me. Feel free to take a look. If you want to get in
+            touch, you can find me on the following platforms:
+          </p>
+          <div class="mt-4 flex flex-wrap gap-4 text-base">
+            {
+              social.map((item) => (
+                <a href={item.link} class="flex items-center gap-2">
+                  <i class={item.iconClass} />
+                  {item.name}
+                </a>
+              ))
+            }
+          </div>
         </div>
       </div>
     </div>
@@ -96,11 +102,12 @@ const projects = [
         {
           projects.map((project) => (
             <a href={project.link} class="block space-y-2">
-              <img
-                src={project.image.src}
+              <Image
+                src={project.image}
                 alt={project.title}
-                class="h-32 w-full rounded-lg object-cover"
+                class="h-32 w-full rounded-lg border object-cover"
                 style="user-drag: none;"
+                width={375}
               />
               <h3 class="text-xl">{project.title}</h3>
               <p class="text-base">{project.description}</p>
