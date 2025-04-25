@@ -14,8 +14,4 @@ export default defineConfig({
       plugins: [pluginCollapsibleSections()],
     }),
   ],
-  i18n: {
-    locales: ["en", "es"],
-    defaultLocale: "en",
-  },
 });

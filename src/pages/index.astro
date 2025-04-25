@@ -9,10 +9,7 @@ import roamrScreenshot1 from "@assets/images/roamr-screenshot-1.webp";
 import bassetaScreenshot1 from "@assets/images/basseta-screenshot-1.png";
 import profilePicture from "@assets/images/profile-picture.jpg";
 
-const posts: CollectionEntry<"blog">[] = await getCollection(
-  "blog",
-  ({ data }) => data.lang === "en" && data.draft !== true
-);
+const posts: CollectionEntry<"blog">[] = await getCollection("blog");
 
 posts.sort(
   (a, b) =>
@@ -132,7 +129,7 @@ const projects = [
                   {getEnglishDate(new Date(post.data.pubDate))}
                 </p>
                 <a
-                  href={`/en/blog/${post.id}`}
+                  href={`/posts/${post.id}`}
                   class="order-2 text-balance text-lg hover:underline sm:order-1"
                 >
                   {post.data.title}
