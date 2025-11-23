@@ -21,28 +21,9 @@ import Posthog from "@components/posthog.astro";
     <title>BetweenFrames</title>
     <Posthog />
   </head>
-  <body class="min-h-screen">
-    <nav
-      class="fixed top-0 z-10 w-full border-b border-secondary/10 bg-white/5 backdrop-blur-md"
-    >
-      <div
-        class="mx-auto flex max-w-2xl flex-col items-center gap-2 px-4 py-2 sm:flex-row sm:justify-between"
-      >
-        <a
-          href="/"
-          class="tracking font-['Crimson_Pro'] text-xl font-light sm:text-2xl"
-        >
-          BetweenFrames
-        </a>
-      </div>
-    </nav>
+  <body class="min-h-screen bg-background">
     <main class="mx-auto max-w-2xl px-4 pt-14 sm:pt-16">
       <slot />
     </main>
-    <footer class="mx-auto max-w-2xl px-4 py-24 sm:pt-16">
-      <p class="text-center font-['Crimson_Pro'] text-sm text-stone-700">
-        &copy; {new Date().getFullYear()} Kenneth Quintero. All rights reserved.
-      </p>
-    </footer>
   </body>
 </html>

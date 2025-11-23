@@ -1,13 +1,18 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import { getEnglishDate } from "@utils/date";
+
 import BaseLayout from "@layouts/BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import workyScreenshot1 from "@assets/images/worky-screenshot-1.png";
 import roamrScreenshot1 from "@assets/images/roamr-screenshot-1.webp";
 import bassetaScreenshot1 from "@assets/images/basseta-screenshot-1.png";
 import profilePicture from "@assets/images/profile-picture.jpg";
+
+import emailIcon from "@assets/icons/mdi_email.svg?raw";
+import linkedinIcon from "@assets/icons/mdi_linkedin.svg?raw";
+import twitterIcon from "@assets/icons/mdi_twitter.svg?raw";
+import githubIcon from "@assets/icons/mdi_github.svg?raw";
 
 const posts: CollectionEntry<"blog">[] = await getCollection("blog");
 
@@ -18,31 +23,31 @@ posts.sort(
 
 const social = [
   {
-    name: "GitHub",
-    link: "https://github.com/cin4ed",
-    iconClass: "fab fa-github",
+    name: "Email",
+    link: "mailto:kenneth.quintero@betweenframes.net",
+    icon: emailIcon,
   },
   {
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/kenneth-de-guadalupe-quintero-valles-1971a12a8/",
-    iconClass: "fab fa-linkedin",
+    icon: linkedinIcon,
   },
   {
     name: "X",
     link: "https://x.com/cin4ed",
-    iconClass: "fab fa-x-twitter",
+    icon: twitterIcon,
   },
   {
-    name: "Email",
-    link: "mailto:kenneth.quintero@betweenframes.net",
-    iconClass: "fas fa-envelope",
+    name: "GitHub",
+    link: "https://github.com/cin4ed",
+    icon: githubIcon,
   },
 ];
 
 const projects = [
   {
     title: "Worky",
-    description: "A macOS app that helps you manage your desktop files.",
+    description: "mac OS desktop organizer.",
     link: "/projects/worky",
     image: workyScreenshot1,
   },
@@ -59,11 +64,70 @@ const projects = [
     image: bassetaScreenshot1,
   },
 ];
+
+function formateDate(date: Date): string {
+  const day = String(date.getDay()).padStart(2, "0");
+  const month = String(date.getMonth()).padStart(2, "0");
+  const year = date.getFullYear();
+
+  return `${day}-${month}-${year}`;
+}
 ---
 
 <BaseLayout>
-  <div class="space-y-10 font-['Crimson_Pro'] text-lg text-stone-700">
-    <div>
+  <div class="uppercase text-foreground">
+    <section class="flex justify-between py-7">
+      <h1>KENNETH QUINTERO</h1>
+      <div class="flex gap-2">
+        {
+          social.map((item) => (
+            <a href={item.link}>
+              <span set:html={item.icon} />
+            </a>
+          ))
+        }
+      </div>
+    </section>
+    <hr class="hr-dashed" />
+    <section class="py-7">
+      <div class="flex items-center gap-2 border-l pl-3">
+        <span class="font-extralight">01</span>
+        <h2>THINGS I'M WORKING ON/THINGS I'VE BUILT</h2>
+      </div>
+      <div class="spacey-1 mt-4 font-extralight">
+        {
+          projects.map((item) => (
+            <a
+              href={item.link}
+              class="block font-extralight hover:bg-foreground hover:text-background"
+            >
+              {item.title} - {item.description}
+            </a>
+          ))
+        }
+      </div>
+    </section>
+    <hr class="hr-dashed" />
+    <section class="py-7">
+      <div class="flex items-center gap-2 border-l pl-3">
+        <span class="font-extralight">02</span>
+        <h2 class="uppercase">Things I've wrote</h2>
+      </div>
+      <div class="mt-4 space-y-1 font-extralight">
+        {
+          posts.map(async (post) => (
+            <a
+              href={`/posts/${post.id}`}
+              class="flex justify-between hover:bg-foreground hover:text-background"
+            >
+              <span>{post.data.title}</span>
+              <span>{formateDate(post.data.pubDate)}</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+    <!-- <div>
       <h2 class="bg-amber-900/15 px-2 text-xl">About me</h2>
       <hr />
       <div class="mt-4 flex items-center gap-6">
@@ -83,7 +147,7 @@ const projects = [
             {
               social.map((item) => (
                 <a href={item.link} class="flex items-center gap-2">
-                  <i class={item.iconClass} />
+                  <i class={item.icon} />
                   {item.name}
                 </a>
               ))
@@ -139,6 +203,6 @@ const projects = [
           )
         }
       </div>
-    </div>
+    </div> -->
   </div>
 </BaseLayout>

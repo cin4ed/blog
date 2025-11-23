@@ -3,10 +3,14 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["PPSupplyMono", "system-ui", "sans-serif"]
+      },
       colors: {
-        background: "#0f172a",
-        foreground: "#64748b",
-        primary: "#0f172a",
+        background: "#13160E",
+        foreground: "#DBE6B6",
+        muted: "hsla(74, 100%, 10%, 1)",
+        primary: "#DBE6B6",
         secondary: "#475569",
         blumine: {
           50: "#f1f9fa",

@@ -1,3 +1,42 @@
 @import "https://fonts.googleapis.com/css2?family=Gruppo&family=Homenaje&family=Inter&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Gruppo&display=swap";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+
+@font-face {
+    font-family: "PPSupplyMono";
+    src: url("/fonts/ppsupplymono-regular.woff2") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PPSupplyMono";
+    src: url("/fonts/ppsupplymono-ultralight.woff2") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Custom text selection color */
+::selection {
+    background-color: theme("colors.foreground");
+    color: theme("colors.background");
+}
+
+::-moz-selection {
+    background-color: theme("colors.foreground");
+    color: theme("colors.background");
+}
+
+.hr-dashed {
+    border: none;
+    height: 1px;
+    background: repeating-linear-gradient(
+        90deg,
+        theme("colors.muted"),
+        theme("colors.muted") 4px,
+        transparent 4px,
+        transparent 10px
+    );
+}
