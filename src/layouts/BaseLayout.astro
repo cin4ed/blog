@@ -25,5 +25,18 @@ import Posthog from "@components/posthog.astro";
     <main class="mx-auto max-w-2xl px-4 pt-14 sm:pt-16">
       <slot />
     </main>
+    <!-- Custom cursor -->
+    <div
+      class="cursor pointer-events-none fixed z-50 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+    <script>
+      const cursor = document.querySelector(".cursor") as HTMLElement;
+
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+    </script>
   </body>
 </html>
