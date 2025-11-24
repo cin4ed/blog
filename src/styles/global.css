@@ -18,20 +18,6 @@
     font-display: swap;
 }
 
-/* Custom pointer image */
-body {
-    cursor: none;
-}
-
-a, button {
-    cursor: none;
-}
-
-.cursor {
-    background: theme("colors.foreground");
-    mix-blend-mode: difference;
-}
-
 /* Custom text selection color */
 ::selection {
     background-color: theme("colors.foreground");

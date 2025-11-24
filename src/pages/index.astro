@@ -47,19 +47,19 @@ const social = [
 const projects = [
   {
     title: "Worky",
-    description: "mac OS desktop organizer.",
+    description: "mac OS desktop organizer",
     link: "/projects/worky",
     image: workyScreenshot1,
   },
   {
     title: "Roamr",
-    description: "An app that helps you find and share abandoned places.",
+    description: "Find and share abandoned places",
     link: "/projects/roamr",
     image: roamrScreenshot1,
   },
   {
     title: "Basseta",
-    description: "A visual node-based audio editor.",
+    description: "Create music with a node based editor",
     link: "/projects/basseta",
     image: bassetaScreenshot1,
   },
@@ -75,8 +75,8 @@ function formateDate(date: Date): string {
 ---
 
 <BaseLayout>
-  <div class="uppercase text-foreground">
-    <section class="flex justify-between py-7">
+  <div class="space-y-7 uppercase text-foreground">
+    <section class="flex justify-between">
       <h1>KENNETH QUINTERO</h1>
       <div class="flex gap-2">
         {
@@ -89,7 +89,7 @@ function formateDate(date: Date): string {
       </div>
     </section>
     <hr class="hr-dashed" />
-    <section class="py-7">
+    <section>
       <div class="flex items-center gap-2 border-l pl-3">
         <span class="font-extralight">01</span>
         <h2>THINGS I'M WORKING ON/THINGS I'VE BUILT</h2>
@@ -108,7 +108,7 @@ function formateDate(date: Date): string {
       </div>
     </section>
     <hr class="hr-dashed" />
-    <section class="py-7">
+    <section>
       <div class="flex items-center gap-2 border-l pl-3">
         <span class="font-extralight">02</span>
         <h2 class="uppercase">Things I've wrote</h2>
@@ -127,82 +127,5 @@ function formateDate(date: Date): string {
         }
       </div>
     </section>
-    <!-- <div>
-      <h2 class="bg-amber-900/15 px-2 text-xl">About me</h2>
-      <hr />
-      <div class="mt-4 flex items-center gap-6">
-        <img
-          src={profilePicture.src}
-          alt="Profile Picture"
-          class="h-32 w-32 rounded-full"
-        />
-        <div>
-          <p class="text-md mt-1">
-            Hi, I'm Kenneth and this is BetweenFrames, my personal website. Here
-            you can find a list of projects I've worked on and some blog posts
-            written by me. Feel free to take a look. If you want to get in
-            touch, you can find me on the following platforms:
-          </p>
-          <div class="mt-4 flex flex-wrap gap-4 text-base">
-            {
-              social.map((item) => (
-                <a href={item.link} class="flex items-center gap-2">
-                  <i class={item.icon} />
-                  {item.name}
-                </a>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h2 class="bg-amber-900/15 px-2 text-xl">Projects</h2>
-      <hr />
-      <div class="mt-4 grid grid-cols-2 gap-5 md:grid-cols-3">
-        {
-          projects.map((project) => (
-            <a href={project.link} class="block space-y-2">
-              <Image
-                src={project.image}
-                alt={project.title}
-                class="h-32 w-full rounded-lg border object-cover"
-                style="user-drag: none;"
-                width={375}
-              />
-              <h3 class="text-xl">{project.title}</h3>
-              <p class="text-base">{project.description}</p>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-    <div>
-      <h2 class="bg-amber-900/15 px-2 text-xl">Blog</h2>
-      <hr />
-      <div class="mt-4 divide-y divide-stone-200">
-        {
-          posts.length === 0 ? (
-            <p class="py-3 text-stone-500">
-              No posts at the moment. Check back later!
-            </p>
-          ) : (
-            posts.map(async (post) => (
-              <div class="flex flex-col py-3 sm:flex-row sm:items-center sm:justify-between">
-                <p class="order-1 text-sm text-stone-500 sm:order-2">
-                  {getEnglishDate(new Date(post.data.pubDate))}
-                </p>
-                <a
-                  href={`/posts/${post.id}`}
-                  class="order-2 text-balance text-lg hover:underline sm:order-1"
-                >
-                  {post.data.title}
-                </a>
-              </div>
-            ))
-          )
-        }
-      </div>
-    </div> -->
   </div>
 </BaseLayout>
