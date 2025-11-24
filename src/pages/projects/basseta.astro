@@ -1,132 +1,61 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import bassetaScreenshot1 from "@assets/images/basseta-screenshot-1.png";
-import { Image } from "astro:assets";
+import bassetaImage from "@assets/images/basseta-project-image.png";
+import { Picture } from "astro:assets";
 ---
 
 <BaseLayout>
-  <div class="space-y-8 font-['Crimson_Pro'] text-stone-700">
-    <div class="space-y-4">
-      <h1 class="text-5xl font-semibold leading-[1.2] tracking-tight">
-        Basseta
-      </h1>
-      <p class="text-[1.2rem]">
-        A visual node-based audio editor that makes audio processing and sound
-        design accessible to everyone.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <img
-          alt="TypeScript"
-          src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
-        />
-        <img
-          alt="React"
-          src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white"
-        />
-        <img
-          alt="Web Audio API"
-          src="https://img.shields.io/badge/Web_Audio_API-FF6B6B?style=for-the-badge&logo=web-audio-api&logoColor=white"
-        />
-        <img
-          alt="Tailwind CSS"
-          src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"
-        />
-      </div>
-      <div class="flex flex-wrap gap-2 pt-2">
-        <a
-          href="https://basseta.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-4 py-2 text-[1.1rem] text-stone-700 transition-all hover:border-stone-300 hover:bg-stone-50"
-        >
-          Visit Website
-        </a>
-      </div>
-    </div>
-
-    <div class="aspect-video w-full rounded-lg bg-stone-100">
-      <Image
-        src={bassetaScreenshot1}
-        alt="Basseta Screenshot"
-        class="h-full w-full rounded-lg object-cover"
+  <div class="space-y-6 uppercase text-foreground">
+    <section class="flex justify-between">
+      <h1>Basseta</h1>
+      <a
+        href="/"
+        class="font-extralight underline hover:bg-foreground hover:text-background"
+        >home</a
+      >
+    </section>
+    <section class="flex w-full flex-col items-center gap-3">
+      <Picture
+        class="h-[400px] w-[400px]"
+        alt="Basseta project image"
+        src={bassetaImage}
+        formats={["avif"]}
+        width={800}
+        height={800}
       />
+      <p class="font-extralight">Visual node-based audio editor</p>
+    </section>
+    <div class="mt-2 space-x-1 font-extralight">
+      <a
+        href="https://basseta.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-extralight underline hover:bg-foreground hover:text-background"
+        >Visit website</a
+      >
     </div>
-
-    <div class="space-y-6">
-      <section class="space-y-3">
-        <h2 class="text-3xl font-semibold">About</h2>
-        <p class="text-[1.2rem]">
-          Basseta is a web-based audio editor that brings the power of
-          node-based audio processing to your browser. Currently in early development,
-          this closed-source project is designed with both beginners and professionals
-          in mind, providing an intuitive visual interface for creating and manipulating
-          audio effects chains without requiring deep technical knowledge of audio
-          processing.
-        </p>
-      </section>
-
-      <section class="space-y-3">
-        <h2 class="text-3xl font-semibold">Key Features</h2>
-        <ul class="list-disc space-y-2 pl-10 text-[1.2rem]">
-          <li>
-            Visual node-based interface for creating audio processing chains
-          </li>
-          <li>Real-time audio processing and preview</li>
-          <li>Extensive library of audio effects and processors</li>
-          <li>Drag-and-drop interface for easy node connection</li>
-          <li>Save and load your audio processing configurations</li>
-          <li>Export processed audio in various formats</li>
-          <li>Responsive design for both desktop and mobile use</li>
-        </ul>
-      </section>
-
-      <section class="space-y-3">
-        <h2 class="text-3xl font-semibold">Technology</h2>
-        <p class="text-[1.2rem]">
-          Built with TypeScript and React, Basseta leverages the Web Audio API
-          to provide real-time audio processing capabilities. The application
-          uses a custom node-based UI framework built on top of React Flow,
-          while Tailwind CSS ensures a consistent and responsive design. The
-          audio processing engine is built with performance in mind, utilizing
-          Web Workers for heavy computations and the Web Audio API's native
-          processing capabilities.
-        </p>
-      </section>
-
-      <section class="space-y-3">
-        <h2 class="text-3xl font-semibold">Development Process</h2>
-        <div class="space-y-4 text-[1.2rem]">
-          <p>
-            Basseta was born from the need for a more accessible way to create
-            and experiment with audio effects. The project started as a simple
-            audio processing tool and evolved into a full-featured node-based
-            editor. Special attention was paid to making the interface intuitive
-            while maintaining powerful capabilities.
-          </p>
-          <p>
-            The development process focused on creating a robust foundation that
-            could support complex audio processing chains while remaining
-            performant. Key challenges included managing real-time audio
-            processing, implementing a flexible node system, and ensuring smooth
-            user interactions.
-          </p>
-        </div>
-      </section>
-
-      <section class="space-y-3">
-        <h2 class="text-3xl font-semibold">Future Plans</h2>
-        <p class="text-[1.2rem]">
-          The project roadmap includes several exciting features:
-        </p>
-        <ul class="list-disc space-y-2 pl-10 text-[1.2rem]">
-          <li>Advanced audio analysis tools and visualizations</li>
-          <li>Support for custom audio processing nodes</li>
-          <li>Collaborative editing features</li>
-          <li>Integration with popular audio formats and DAWs</li>
-          <li>Enhanced mobile experience with touch gestures</li>
-          <li>Community-driven node library</li>
-        </ul>
-      </section>
-    </div>
+    <section>
+      <h2>About</h2>
+      <p class="mt-2 font-extralight">
+        Basseta is a visual node-based audio editor that makes audio processing
+        accessible to everyone. It's a web-based tool that lets you create
+        complex audio effects chains by connecting nodes together – no deep
+        technical knowledge required. Just drag, drop, and connect nodes to
+        build your sound. Currently in early development, this closed-source
+        project aims to bring powerful audio processing to your browser.
+      </p>
+    </section>
+    <section>
+      <h2>Nerd Notes</h2>
+      <p class="mt-2 font-extralight">
+        Built with TypeScript and React, leveraging the Web Audio API for
+        real-time audio processing. I used React Flow as the foundation for the
+        node system, which was super fun to customize. The biggest challenge?
+        Making sure audio processing stays performant even with complex chains –
+        ended up using Web Workers for the heavy lifting. It's still early days,
+        but I'm stoked about making audio processing more visual and intuitive.
+        Give it a try if you're into sound design!
+      </p>
+    </section>
   </div>
 </BaseLayout>
