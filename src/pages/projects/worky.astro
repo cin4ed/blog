@@ -10,13 +10,27 @@ import workyImage from "@assets/images/worky-400x400.png";
       <a
         href="/"
         class="font-extralight underline hover:bg-foreground hover:text-background"
-        >go home</a
+        >home</a
       >
     </section>
     <section class="flex w-full flex-col items-center gap-3">
       <img alt="worky image" src={workyImage.src} />
       <p class="font-extralight">Mac os desktop organizer</p>
     </section>
+    <div class="mt-2 space-x-1 font-extralight">
+      <a
+        href="/"
+        class="font-extralight underline hover:bg-foreground hover:text-background"
+        >Visit website</a
+      >
+      <a
+        href="https://www.producthunt.com/p/worky/worky"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-extralight underline hover:bg-foreground hover:text-background"
+        >View on producthunt</a
+      >
+    </div>
     <section>
       <h2>About</h2>
       <p class="mt-2 font-extralight">
@@ -28,21 +42,17 @@ import workyImage from "@assets/images/worky-400x400.png";
       </p>
     </section>
     <section>
-      <h2>Links</h2>
-      <div class="mt-2 font-extralight">
-        <a
-          href="/"
-          class="font-extralight underline hover:bg-foreground hover:text-background"
-          >Visit website</a
-        >
-        <a
-          href="https://www.producthunt.com/p/worky/worky"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-extralight underline hover:bg-foreground hover:text-background"
-          >View on producthunt</a
-        >
-      </div>
+      <h2>Nerd Notes</h2>
+      <p class="mt-2 font-extralight">
+        With worky, keeping the app state sane was a massive pain in the ass,
+        that it almost made me give up on this one, but neveeer!!!!. Tracking
+        workspaces, serializing/deserializing them reliably, and especially
+        dealing with all the chaos when users mess with their folders outside
+        the app (or while it’s closed) meant hunting down a ton of nasty edge
+        cases and building a proper little state machine under the hood. Gotta
+        say – I’m pretty damn proud of this bad boy ;) If you get a chance,
+        check it out!
+      </p>
     </section>
   </div>
 </BaseLayout>

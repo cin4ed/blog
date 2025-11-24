@@ -1,13 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
 
 import BaseLayout from "@layouts/BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
-import workyScreenshot1 from "@assets/images/worky-screenshot-1.png";
-import roamrScreenshot1 from "@assets/images/roamr-screenshot-1.webp";
-import bassetaScreenshot1 from "@assets/images/basseta-screenshot-1.png";
-import profilePicture from "@assets/images/profile-picture.jpg";
 
 import emailIcon from "@assets/icons/mdi_email.svg?raw";
 import linkedinIcon from "@assets/icons/mdi_linkedin.svg?raw";
@@ -49,19 +44,21 @@ const projects = [
     title: "Worky",
     description: "mac OS desktop organizer",
     link: "/projects/worky",
-    image: workyScreenshot1,
+  },
+  {
+    title: "Enfá",
+    description: "food delivery for my town",
+    link: "/projects/enfa",
   },
   {
     title: "Roamr",
     description: "Find and share abandoned places",
     link: "/projects/roamr",
-    image: roamrScreenshot1,
   },
   {
     title: "Basseta",
     description: "Create music with a node based editor",
     link: "/projects/basseta",
-    image: bassetaScreenshot1,
   },
 ];
 
@@ -90,10 +87,7 @@ function formateDate(date: Date): string {
     </section>
     <hr class="hr-dashed" />
     <section>
-      <div class="flex items-center gap-2 border-l pl-3">
-        <span class="font-extralight">01</span>
-        <h2>THINGS I'M WORKING ON/THINGS I'VE BUILT</h2>
-      </div>
+      <h2>THINGS I'M WORKING ON/THINGS I'VE BUILT</h2>
       <div class="spacey-1 mt-4 font-extralight">
         {
           projects.map((item) => (
@@ -101,7 +95,7 @@ function formateDate(date: Date): string {
               href={item.link}
               class="block font-extralight hover:bg-foreground hover:text-background"
             >
-              {item.title} - {item.description}
+              &gt; {item.title} - {item.description}
             </a>
           ))
         }
@@ -109,10 +103,7 @@ function formateDate(date: Date): string {
     </section>
     <hr class="hr-dashed" />
     <section>
-      <div class="flex items-center gap-2 border-l pl-3">
-        <span class="font-extralight">02</span>
-        <h2 class="uppercase">Things I've wrote</h2>
-      </div>
+      <h2 class="uppercase">Me trying to be a writer</h2>
       <div class="mt-4 space-y-1 font-extralight">
         {
           posts.map(async (post) => (
