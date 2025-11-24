@@ -13,7 +13,7 @@ const posts: CollectionEntry<"blog">[] = await getCollection("blog");
 
 posts.sort(
   (a, b) =>
-    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
 );
 
 const social = [
@@ -88,14 +88,14 @@ function formateDate(date: Date): string {
     <hr class="hr-dashed" />
     <section>
       <h2>THINGS I'M WORKING ON/THINGS I'VE BUILT</h2>
-      <div class="spacey-1 mt-4 font-extralight">
+      <div class="mt-4 space-y-1 font-extralight">
         {
           projects.map((item) => (
             <a
               href={item.link}
               class="block font-extralight hover:bg-foreground hover:text-background"
             >
-              &gt; {item.title} - {item.description}
+              - {item.title} | {item.description}
             </a>
           ))
         }

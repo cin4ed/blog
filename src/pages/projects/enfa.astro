@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import workyImage from "@assets/images/worky-400x400.png";
+import { Picture } from "astro:assets";
+import projectImage from "@assets/images/enfa-project-image.png";
 ---
 
 <BaseLayout>
@@ -14,7 +15,14 @@ import workyImage from "@assets/images/worky-400x400.png";
       >
     </section>
     <section class="flex w-full flex-col items-center gap-3">
-      <img alt="worky image" src={workyImage.src} />
+      <Picture
+        class="h-[400px] w-[400px]"
+        alt="Enfá project image"
+        src={projectImage}
+        formats={["avif"]}
+        width={800}
+        height={800}
+      />
       <p class="font-extralight">Food delivery for my town</p>
     </section>
     <div class="mt-2 space-x-1 font-extralight">
@@ -27,8 +35,8 @@ import workyImage from "@assets/images/worky-400x400.png";
     <section>
       <h2>About</h2>
       <p class="mt-2 font-extralight">
-        Enfá is a food delivery app for my town. It allows you to order food
-        from local restaurants and have it delivered to your door.
+        Enfá is a food delivery app I made for my town. It allows you to order
+        food from local restaurants and have it delivered to your door.
       </p>
     </section>
     <section>
