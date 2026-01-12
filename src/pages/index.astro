@@ -9,6 +9,9 @@ import linkedinIcon from "@assets/icons/mdi_linkedin.svg?raw";
 import twitterIcon from "@assets/icons/mdi_twitter.svg?raw";
 import githubIcon from "@assets/icons/mdi_github.svg?raw";
 
+import { Picture } from "astro:assets";
+import subberoImage from "@assets/images/test.png";
+
 const posts: CollectionEntry<"blog">[] = await getCollection("blog");
 
 posts.sort(
@@ -41,25 +44,30 @@ const social = [
 
 const projects = [
   {
+    title: "Subbero",
+    description: "Subscription tracker",
+    link: "https://subbero.vercel.app/",
+  },
+  {
     title: "Worky",
     description: "mac OS desktop organizer",
     link: "/projects/worky",
   },
-  {
-    title: "Enfá",
-    description: "food delivery for my town",
-    link: "/projects/enfa",
-  },
-  {
-    title: "Roamr",
-    description: "Find and share abandoned places",
-    link: "/projects/roamr",
-  },
-  {
-    title: "Basseta",
-    description: "Create music with a node based editor",
-    link: "/projects/basseta",
-  },
+  // {
+  //   title: "Enfá",
+  //   description: "food delivery for my town",
+  //   link: "/projects/enfa",
+  // },
+  // {
+  //   title: "Roamr",
+  //   description: "Find and share abandoned places",
+  //   link: "/projects/roamr",
+  // },
+  // {
+  //   title: "Basseta",
+  //   description: "Create music with a node based editor",
+  //   link: "/projects/basseta",
+  // },
 ];
 
 function formateDate(date: Date): string {
@@ -75,7 +83,7 @@ function formateDate(date: Date): string {
   <div class="space-y-7 uppercase text-foreground">
     <section class="flex justify-between">
       <h1>KENNETH QUINTERO</h1>
-      <div class="flex gap-2">
+      <div class="social-icons flex gap-2">
         {
           social.map((item) => (
             <a href={item.link}>
@@ -87,23 +95,56 @@ function formateDate(date: Date): string {
     </section>
     <hr class="hr-dashed" />
     <section>
-      <h2>THINGS I'M WORKING ON/THINGS I'VE BUILT</h2>
-      <div class="mt-4 space-y-1 font-extralight">
+      <div>
+        <h2>ABOUT ME</h2>
+      </div>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        <p
+          class="text-sm font-extralight leading-relaxed tracking-[0.08em] text-foreground/80 sm:col-span-2"
+        >
+          Software engineer. Trying stuff until it works.
+        </p>
+      </div>
+    </section>
+    <hr class="hr-dashed" />
+    <section>
+      <div class="flex items-end justify-between">
+        <h2>PROJECTS</h2>
+        <span
+          class="text-xs font-extralight tracking-[0.2em] text-foreground/70"
+        >
+          SELECTED
+        </span>
+      </div>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
         {
-          projects.map((item) => (
+          projects.map((item, index) => (
             <a
               href={item.link}
-              class="block font-extralight hover:bg-foreground hover:text-background"
+              class="group relative overflow-hidden border border-foreground/30 bg-foreground/5 p-4 transition hover:-translate-y-0.5 hover:border-foreground/70 hover:bg-foreground hover:text-background"
             >
-              - {item.title} | {item.description}
+              <div class="flex items-center justify-between">
+                <span class="text-xs tracking-[0.35em] text-foreground/60 group-hover:text-background/80">
+                  0{index + 1}
+                </span>
+                <span class="text-[10px] tracking-[0.3em] text-foreground/60 group-hover:text-background/80">
+                  VIEW
+                </span>
+              </div>
+              <div class="mt-4 text-base font-extralight tracking-[0.15em]">
+                {item.title}
+              </div>
+              <div class="mt-2 text-xs font-extralight tracking-[0.2em] text-foreground/80 group-hover:text-background/90">
+                {item.description}
+              </div>
             </a>
           ))
         }
       </div>
     </section>
-    <hr class="hr-dashed" />
-    <section>
-      <h2 class="uppercase">Me trying to be a writer</h2>
+    <!-- <hr class="hr-dashed" /> -->
+    <!-- <section>
+      <h2 class="uppercase">BLOG</h2>
       <div class="mt-4 space-y-1 font-extralight">
         {
           posts.map(async (post) => (
@@ -117,6 +158,22 @@ function formateDate(date: Date): string {
           ))
         }
       </div>
-    </section>
+    </section> -->
   </div>
 </BaseLayout>
+
+<style>
+  .pan-img {
+    animation: pan 8s ease-in-out infinite alternate;
+    object-position: 50% 20%;
+  }
+
+  @keyframes pan {
+    from {
+      object-position: 50% 20%;
+    }
+    to {
+      object-position: 50% 80%;
+    }
+  }
+</style>
