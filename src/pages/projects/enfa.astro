@@ -1,22 +1,22 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import Layout from "@layouts/Layout.astro";
 import { Picture } from "astro:assets";
 import projectImage from "@assets/images/enfa-project-image.png";
 ---
 
-<BaseLayout>
-  <div class="space-y-6 uppercase text-foreground">
+<Layout>
+  <div class="text-foreground space-y-6 uppercase">
     <section class="flex justify-between">
       <h1>Enfá</h1>
       <a
         href="/"
-        class="font-extralight underline hover:bg-foreground hover:text-background"
+        class="hover:bg-foreground hover:text-background font-extralight underline"
         >home</a
       >
     </section>
     <section class="flex w-full flex-col items-center gap-3">
       <Picture
-        class="h-[400px] w-[400px]"
+        class="h-100 w-100"
         alt="Enfá project image"
         src={projectImage}
         formats={["avif"]}
@@ -28,7 +28,7 @@ import projectImage from "@assets/images/enfa-project-image.png";
     <div class="mt-2 space-x-1 font-extralight">
       <a
         href="/"
-        class="font-extralight underline hover:bg-foreground hover:text-background"
+        class="hover:bg-foreground hover:text-background font-extralight underline"
         >Visit website</a
       >
     </div>
@@ -50,4 +50,4 @@ import projectImage from "@assets/images/enfa-project-image.png";
       </p>
     </section>
   </div>
-</BaseLayout>
+</Layout>

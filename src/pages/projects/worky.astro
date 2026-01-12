@@ -1,22 +1,22 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import Layout from "@layouts/Layout.astro";
 import workyImage from "@assets/images/worky-400x400.png";
 import { Picture } from "astro:assets";
 ---
 
-<BaseLayout>
-  <div class="space-y-6 uppercase text-foreground">
+<Layout>
+  <div class="text-foreground space-y-6 uppercase">
     <section class="flex justify-between">
       <h1>Worky</h1>
       <a
         href="/"
-        class="font-extralight underline hover:bg-foreground hover:text-background"
+        class="hover:bg-foreground hover:text-background font-extralight underline"
         >home</a
       >
     </section>
     <section class="flex w-full flex-col items-center gap-3">
       <Picture
-        class="h-[400px] w-[400px]"
+        class="h-100 w-100"
         alt="Worky project image"
         src={workyImage}
         formats={["avif"]}
@@ -28,14 +28,14 @@ import { Picture } from "astro:assets";
     <div class="mt-2 space-x-1 font-extralight">
       <a
         href="/"
-        class="font-extralight underline hover:bg-foreground hover:text-background"
+        class="hover:bg-foreground hover:text-background font-extralight underline"
         >Visit website</a
       >
       <a
         href="https://www.producthunt.com/p/worky/worky"
         target="_blank"
         rel="noopener noreferrer"
-        class="font-extralight underline hover:bg-foreground hover:text-background"
+        class="hover:bg-foreground hover:text-background font-extralight underline"
         >View on producthunt</a
       >
     </div>
@@ -63,4 +63,4 @@ import { Picture } from "astro:assets";
       </p>
     </section>
   </div>
-</BaseLayout>
+</Layout>
