@@ -1,11 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@config "../../tailwind.config.mjs";
-
-@import "https://fonts.googleapis.com/css2?family=Gruppo&family=Homenaje&family=Inter&display=swap";
-@import "https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Gruppo&display=swap";
-@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "tailwindcss";
 
 @font-face {
   font-family: "PPSupplyMono";
@@ -23,15 +16,24 @@
   font-display: swap;
 }
 
+@theme {
+  --color-background: #151515;
+  --color-foreground: #c0beaf;
+  --color-primary: #c0beaf;
+  --color-muted: #2c2c2c;
+
+  --font-supply-mono: "PPSupplyMono", sans-serif;
+}
+
 /* Custom text selection color */
 ::selection {
-  background-color: theme("colors.foreground");
-  color: theme("colors.background");
+  background-color: var(--color-foreground);
+  color: var(--color-background);
 }
 
 ::-moz-selection {
-  background-color: theme("colors.foreground");
-  color: theme("colors.background");
+  background-color: var(--color-foreground);
+  color: var(--color-background);
 }
 
 .hr-dashed {
@@ -39,8 +41,8 @@
   height: 1px;
   background: repeating-linear-gradient(
     90deg,
-    theme("colors.muted"),
-    theme("colors.muted") 4px,
+    var(--color-muted),
+    var(--color-muted) 4px,
     transparent 4px,
     transparent 10px
   );
