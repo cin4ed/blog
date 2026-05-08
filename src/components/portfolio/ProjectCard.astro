@@ -5,12 +5,14 @@ interface Props {
   year: string;
   paperBg: string;
   rotate: number;
+  href: string;
 }
-const { name, tag, year, paperBg, rotate } = Astro.props;
+const { name, tag, year, paperBg, rotate, href } = Astro.props;
 ---
 
-<div
+<a
   class="project-card"
+  href={href}
   style={`--rotate: ${rotate}deg; --paper-bg: ${paperBg};`}
 >
   <div class="frame">
@@ -40,4 +42,4 @@ const { name, tag, year, paperBg, rotate } = Astro.props;
       </div>
     </div>
   </div>
-</div>
+</a>

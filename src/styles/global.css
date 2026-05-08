@@ -185,10 +185,18 @@ a {
 
 .project-card {
   position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
   transform: rotate(var(--rotate, 0deg));
   transition:
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.35s;
+}
+.project-card:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 .project-card .frame {
   position: relative;

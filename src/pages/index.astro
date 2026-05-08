@@ -22,6 +22,7 @@ const socials = [
 const projects = [
   {
     name: "Inknote",
+    slug: "inknote",
     tag: "a notes app that thinks like a whiteboard",
     year: "2025",
     paperBg: "#e8e6dc",
@@ -30,6 +31,7 @@ const projects = [
   },
   {
     name: "Tide",
+    slug: "tide",
     tag: "surf forecasts for the baja coast",
     year: "2024",
     paperBg: "#dfe6ec",
@@ -38,6 +40,7 @@ const projects = [
   },
   {
     name: "Paw",
+    slug: "paw",
     tag: "walk tracker for households with too many dogs",
     year: "2024",
     paperBg: "#f1ebe2",
@@ -46,6 +49,7 @@ const projects = [
   },
   {
     name: "Fretline",
+    slug: "fretline",
     tag: "guitar tabs that follow along while you play",
     year: "2023",
     paperBg: "#e6e3da",
@@ -130,6 +134,7 @@ const posts = [
                 year={p.year}
                 paperBg={p.paperBg}
                 rotate={p.rotate}
+                href={`/projects/${p.slug}`}
               >
                 <Mock />
               </ProjectCard>
