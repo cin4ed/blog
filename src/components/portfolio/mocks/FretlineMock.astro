@@ -1,0 +1,75 @@
+---
+const chords = [
+  { name: "G", dots: [[2, 0], [3, 1], [6, 2]] as [number, number][] },
+  { name: "D", dots: [[3, 1], [1, 2], [2, 2]] as [number, number][] },
+  { name: "Em", dots: [[5, 1], [4, 1]] as [number, number][] },
+  { name: "C", dots: [[5, 0], [4, 1], [2, 2]] as [number, number][] },
+];
+---
+
+<div
+  style='position: absolute; inset: 0; padding: 18px; font-family: "Geist", sans-serif; color: #2a2a2a; overflow: hidden;'
+>
+  <div
+    style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;"
+  >
+    <div style="font-size: 12px; font-weight: 500;">fretline</div>
+    <div
+      style='font-family: "Geist Mono", monospace; font-size: 10px; color: #7a7a7a;'
+    >
+      capo 2
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 14px; margin-bottom: 12px;">
+    {
+      chords.map((c, i) => (
+        <div style="flex: 1;">
+          <div
+            style={`font-family: "Geist Mono", monospace; font-size: 11px; margin-bottom: 4px; color: ${i === 1 ? "#ea833e" : "#2a2a2a"}; font-weight: 500;`}
+          >
+            {c.name}
+          </div>
+          <svg viewBox="0 0 36 44" style="width: 100%; display: block;">
+            {[0, 1, 2, 3, 4, 5].map((s) => (
+              <line
+                x1={3 + s * 6}
+                y1="2"
+                x2={3 + s * 6}
+                y2="40"
+                stroke="#9a9a9a"
+                stroke-width="0.5"
+              />
+            ))}
+            {[0, 1, 2, 3].map((f) => (
+              <line
+                x1="3"
+                y1={4 + f * 12}
+                x2="33"
+                y2={4 + f * 12}
+                stroke="#9a9a9a"
+                stroke-width={f === 0 ? 1.5 : 0.5}
+              />
+            ))}
+            {c.dots.map(([s, f]) => (
+              <circle
+                cx={3 + s * 6}
+                cy={4 + f * 12 + 6}
+                r="2.2"
+                fill={i === 1 ? "#ea833e" : "#2a2a2a"}
+              />
+            ))}
+          </svg>
+        </div>
+      ))
+    }
+  </div>
+
+  <div
+    style='font-family: "Geist Mono", monospace; font-size: 9.5px; color: #7a7a7a; line-height: 1.7; border-top: 1px solid #d4d4d2; padding-top: 8px;'
+  >
+    e|—3—2—0—0—<br />
+    B|—0—3—0—1—<br />
+    G|—0—2—0—0—
+  </div>
+</div>

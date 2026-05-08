@@ -7,23 +7,26 @@ import Posthog from "@components/posthog.astro";
 <html lang="en" class="antialiased">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="kenneth — software, design, occasional writing. todos santos, baja."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
-    <title>BetweenFrames</title>
+    <title>kenneth — portfolio</title>
     <Posthog />
   </head>
-  <body class="bg-background font-supply-mono min-h-screen">
-    <main class="mx-auto max-w-2xl px-4 pt-14 pb-14 sm:pt-16">
-      <slot />
-    </main>
+  <body>
+    <slot />
   </body>
 </html>

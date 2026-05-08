@@ -1,0 +1,29 @@
+---
+interface Props {
+  label: string;
+  mark?: string;
+}
+const { label, mark } = Astro.props;
+---
+
+<div
+  style="display: flex; align-items: center; gap: 10px; margin-bottom: 22px;"
+>
+  <span
+    class="mono"
+    style="font-size: 12.5px; color: var(--ink-2); letter-spacing: .02em;"
+  >
+    {label}
+  </span>
+  <span style="flex: 1; height: 1px; background: var(--rule);"></span>
+  {
+    mark && (
+      <span
+        class="mono"
+        style="font-size: 11px; color: var(--orange); font-weight: 500;"
+      >
+        {mark}
+      </span>
+    )
+  }
+</div>

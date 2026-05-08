@@ -1,0 +1,38 @@
+---
+---
+
+<div
+  aria-hidden="true"
+  class="hand-arrow"
+  style="position: absolute; right: 24px; top: -6px; pointer-events: none; opacity: .85;"
+>
+  <svg width="60" height="46" viewBox="0 0 60 46">
+    <path
+      d="M55 8 Q 35 2, 18 18 Q 8 28, 6 38"
+      stroke="var(--orange)"
+      stroke-width="1.4"
+      fill="none"
+      stroke-linecap="round"></path>
+    <path
+      d="M3 36 L6 40 L11 39"
+      stroke="var(--orange)"
+      stroke-width="1.4"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
+  <span
+    class="hand"
+    style="position: absolute; right: -36px; top: 10px; font-size: 16px; color: var(--orange); white-space: nowrap; transform: rotate(-6deg);"
+  >
+    keep scrolling
+  </span>
+</div>
+
+<style>
+  @media (max-width: 520px) {
+    .hand-arrow {
+      display: none;
+    }
+  }
+</style>

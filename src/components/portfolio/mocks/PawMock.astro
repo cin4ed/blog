@@ -1,0 +1,56 @@
+---
+const dogs = [
+  { name: "luna", m: 38, c: "#3a3a3a" },
+  { name: "miso", m: 22, c: "#ea833e" },
+  { name: "pepe", m: 41, c: "#3a3a3a" },
+  { name: "chico", m: 12, c: "#3a3a3a" },
+];
+---
+
+<div
+  style='position: absolute; inset: 0; padding: 18px; font-family: "Geist", sans-serif; color: #2a2a2a; overflow: hidden;'
+>
+  <div
+    style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;"
+  >
+    <div style="font-size: 12px; font-weight: 500;">walks · this week</div>
+    <div
+      style='font-family: "Geist Mono", monospace; font-size: 10px; color: #7a7a7a;'
+    >
+      4 dogs
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 9px;">
+    {
+      dogs.map((d) => (
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div
+            style='width: 38px; font-family: "Geist Mono", monospace; font-size: 10px; color: #3a3a3a;'
+          >
+            {d.name}
+          </div>
+          <div
+            style="flex: 1; height: 7px; background: #e3e3e1; border-radius: 4px; overflow: hidden;"
+          >
+            <div
+              style={`width: ${(d.m / 45) * 100}%; height: 100%; background: ${d.c}; border-radius: 4px;`}
+            />
+          </div>
+          <div
+            style='width: 32px; text-align: right; font-family: "Geist Mono", monospace; font-size: 9.5px; color: #7a7a7a;'
+          >
+            {d.m}m
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div
+    style='margin-top: 14px; padding-top: 10px; border-top: 1px solid #d4d4d2; display: flex; justify-content: space-between; font-family: "Geist Mono", monospace; font-size: 9.5px; color: #7a7a7a;'
+  >
+    <span>total · 113 min</span>
+    <span style="color: #ea833e; font-weight: 500;">+18% vs last</span>
+  </div>
+</div>
