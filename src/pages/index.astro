@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import SectionHead from "@components/portfolio/SectionHead.astro";
 import ProjectCard from "@components/portfolio/ProjectCard.astro";
@@ -15,7 +16,6 @@ const socials = [
     label: "linkedin",
     href: "https://www.linkedin.com/in/kenneth-de-guadalupe-quintero-valles-1971a12a8/",
   },
-  { label: "insta", href: "#" },
   { label: "email", href: "mailto:kenneth.quintero@betweenframes.net" },
 ];
 
@@ -27,47 +27,46 @@ const projects = [
     year: "2025",
     paperBg: "#e8e6dc",
     rotate: -1.2,
+    href: "https://www.inknote.net/",
     Mock: InknoteMock,
   },
-  {
-    name: "Tide",
-    slug: "tide",
-    tag: "surf forecasts for the baja coast",
-    year: "2024",
-    paperBg: "#dfe6ec",
-    rotate: 0.8,
-    Mock: TideMock,
-  },
-  {
-    name: "Paw",
-    slug: "paw",
-    tag: "walk tracker for households with too many dogs",
-    year: "2024",
-    paperBg: "#f1ebe2",
-    rotate: -0.6,
-    Mock: PawMock,
-  },
-  {
-    name: "Fretline",
-    slug: "fretline",
-    tag: "guitar tabs that follow along while you play",
-    year: "2023",
-    paperBg: "#e6e3da",
-    rotate: 1.4,
-    Mock: FretlineMock,
-  },
+  // {
+  //   name: "Tide",
+  //   slug: "tide",
+  //   tag: "surf forecasts for the baja coast",
+  //   year: "2024",
+  //   paperBg: "#dfe6ec",
+  //   rotate: 0.8,
+  //   Mock: TideMock,
+  // },
+  // {
+  //   name: "Paw",
+  //   slug: "paw",
+  //   tag: "walk tracker for households with too many dogs",
+  //   year: "2024",
+  //   paperBg: "#f1ebe2",
+  //   rotate: -0.6,
+  //   Mock: PawMock,
+  // },
+  // {
+  //   name: "Fretline",
+  //   slug: "fretline",
+  //   tag: "guitar tabs that follow along while you play",
+  //   year: "2023",
+  //   paperBg: "#e6e3da",
+  //   rotate: 1.4,
+  //   Mock: FretlineMock,
+  // },
 ];
 
-const posts = [
-  { title: "the smallest possible state machine", date: "mar 26", read: "4 min" },
-  {
-    title: "i replaced my todo app with a markdown file",
-    date: "feb 09",
-    read: "6 min",
-  },
-  { title: "notes on building things by the sea", date: "jan 14", read: "3 min" },
-  { title: "why my dog is a better rubber duck", date: "nov 02", read: "2 min" },
-];
+const posts = (await getCollection("posts"))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .map((p) => ({
+    ...p.data,
+    date: p.data.date
+      .toLocaleString("en-US", { month: "short", day: "2-digit" })
+      .toLowerCase(),
+  }));
 ---
 
 <Layout>
@@ -77,7 +76,7 @@ const posts = [
         class="mono"
         style="font-size: 11.5px; color: var(--ink-3); letter-spacing: .05em; margin-bottom: 18px;"
       >
-        kenneth · todos santos, baja
+        kenneth · loreto, baja sur
       </div>
       <p
         style="font-size: 17px; line-height: 1.55; margin: 0; color: var(--ink); max-width: 460px; text-wrap: pretty;"
@@ -91,13 +90,14 @@ const posts = [
       </p>
     </div>
 
+    <!-- Social Links -->
     <div class="reveal reveal-2" style="position: relative;">
       <div
         style="display: flex; flex-wrap: wrap; gap: 14px 18px; margin-top: 32px;"
       >
         {
           socials.map((l) => (
-            <a href={l.href} class="social-link">
+            <a href={l.href} class="social-link" target="_blank">
               {l.label}
               <svg
                 width="9"
@@ -118,9 +118,10 @@ const posts = [
           ))
         }
       </div>
-      <!-- <Doodles /> -->
+      <Doodles />
     </div>
 
+    <!-- Projects -->
     <section class="reveal reveal-3" style="margin-top: 88px;">
       <SectionHead label="projects" mark={`${projects.length} things`} />
       <div class="projects-grid">
@@ -134,7 +135,7 @@ const posts = [
                 year={p.year}
                 paperBg={p.paperBg}
                 rotate={p.rotate}
-                href={`/projects/${p.slug}`}
+                href={p.href}
               >
                 <Mock />
               </ProjectCard>
@@ -179,9 +180,6 @@ const posts = [
       class="reveal reveal-5"
       style="margin-top: 96px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;"
     >
-      <div class="mono" style="font-size: 11px; color: var(--ink-3);">
-        made by hand · 4 dogs · 1 guitar · 0 frameworks (almost)
-      </div>
       <div class="mono" style="font-size: 11px; color: var(--ink-3);">
         <span
           style="display: inline-block; width: 6px; height: 6px; border-radius: 6px; background: var(--orange); margin-right: 6px; vertical-align: middle;"
