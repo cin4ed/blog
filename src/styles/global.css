@@ -154,6 +154,14 @@ a {
   border-bottom-color: var(--orange);
 }
 
+h1.post-title {
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  text-wrap: balance;
+}
 .post-row {
   display: grid;
   grid-template-columns: 1fr auto auto;
@@ -278,7 +286,7 @@ a {
 .post-article {
   max-width: 640px;
   margin: 0 auto;
-  padding: 48px 32px 0;
+  padding: 48px 32px;
   position: relative;
 }
 
@@ -353,7 +361,7 @@ a {
 }
 
 .tags-row {
-  margin-top: 48px;
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;

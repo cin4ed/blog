@@ -95,6 +95,7 @@ const initial = SITE.name.charAt(0);
           </>
         )
       }
+      
       <span>{dateFmt}</span>
       <span class="dot"></span>
       <span>{post.data.read}</span>
@@ -103,6 +104,18 @@ const initial = SITE.name.charAt(0);
     <h1 class="post-title">{post.data.title}</h1>
 
     {post.data.excerpt && <p class="post-lede">{post.data.excerpt}</p>}
+
+    {
+      post.data.tags && post.data.tags.length > 0 && (
+        <div class="tags-row">
+          {post.data.tags.map((t) => (
+            <a href={`/#writing`} class="tag-chip">
+              {t}
+            </a>
+          ))}
+        </div>
+      )
+    }
 
     <div class="by-row">
       <span class="avatar">{initial}</span>
@@ -125,18 +138,6 @@ const initial = SITE.name.charAt(0);
     </Prose>
 
     {
-      post.data.tags && post.data.tags.length > 0 && (
-        <div class="tags-row">
-          {post.data.tags.map((t) => (
-            <a href={`/#writing`} class="tag-chip">
-              {t}
-            </a>
-          ))}
-        </div>
-      )
-    }
-
-    {
       next && (
         <a href={`/posts/${next.id}`} class="next-post">
           <div class="label">
@@ -150,15 +151,6 @@ const initial = SITE.name.charAt(0);
       )
     }
   </article>
-
-  <!-- <footer class="post-foot">
-    <div>
-      <span
-        style="display:inline-block;width:6px;height:6px;border-radius:6px;background:var(--orange);margin-right:6px;vertical-align:middle;"
-      ></span>
-      available for work
-    </div>
-  </footer> -->
 </Layout>
 
 <script>
