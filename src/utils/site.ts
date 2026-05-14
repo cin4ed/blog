@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "kenneth",
+  name: "kenneth quintero",
   location: "loreto, baja sur",
   socials: [
     { label: "github", href: "https://github.com/cin4ed" },
