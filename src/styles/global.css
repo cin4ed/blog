@@ -483,3 +483,9 @@ h1.post-title {
     font-size: 30px;
   }
 }
+
+.giscus {
+  max-width: 600px;
+  margin: 0 auto 48px;
+  min-height: 150px;
+}
