@@ -166,7 +166,7 @@ a {
   transition:
     padding 0.25s,
     color 0.25s;
-  cursor: default;
+  cursor: pointer;
 }
 .post-row .arrow {
   display: none;
@@ -291,7 +291,6 @@ a {
   color: var(--ink-3);
   letter-spacing: 0.04em;
   margin-bottom: 20px;
-  cursor: pointer;
 }
 .meta-row .dot {
   width: 4px;
