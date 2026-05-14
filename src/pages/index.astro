@@ -8,16 +8,9 @@ import InknoteMock from "@components/portfolio/mocks/InknoteMock.astro";
 import TideMock from "@components/portfolio/mocks/TideMock.astro";
 import PawMock from "@components/portfolio/mocks/PawMock.astro";
 import FretlineMock from "@components/portfolio/mocks/FretlineMock.astro";
+import { SITE } from "@utils/site";
 
-const socials = [
-  { label: "github", href: "https://github.com/cin4ed" },
-  { label: "x", href: "https://x.com/cin4ed" },
-  {
-    label: "linkedin",
-    href: "https://www.linkedin.com/in/kenneth-de-guadalupe-quintero-valles-1971a12a8/",
-  },
-  { label: "email", href: "mailto:kenneth.quintero@betweenframes.net" },
-];
+const socials = SITE.socials;
 
 const projects = [
   {
@@ -60,8 +53,10 @@ const projects = [
 ];
 
 const posts = (await getCollection("posts"))
+  .filter((p) => !p.data.draft || import.meta.env.DEV)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .map((p) => ({
+    id: p.id,
     ...p.data,
     date: p.data.date
       .toLocaleString("en-US", { month: "short", day: "2-digit" })
@@ -145,12 +140,16 @@ const posts = (await getCollection("posts"))
       </div>
     </section>
 
-    <section class="reveal reveal-4" style="margin-top: 88px;">
+    <section
+      id="writing"
+      class="reveal reveal-4"
+      style="margin-top: 88px;"
+    >
       <SectionHead label="writing" mark={`${posts.length} posts`} />
       <div style="display: flex; flex-direction: column;">
         {
           posts.map((p) => (
-            <div class="post-row">
+            <a href={`/posts/${p.id}`} class="post-row">
               <span
                 class="post-title"
                 style="font-size: 14.5px; transition: color .25s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
@@ -170,7 +169,7 @@ const posts = (await getCollection("posts"))
               >
                 {p.date}
               </span>
-            </div>
+            </a>
           ))
         }
       </div>

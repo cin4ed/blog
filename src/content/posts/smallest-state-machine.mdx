@@ -1,0 +1,61 @@
+---
+title: the smallest possible state machine
+date: 2026-03-26
+read: 4 min
+tag: notes
+tags: [javascript, state-machines, small-things, notes]
+excerpt: i kept reaching for libraries to manage three booleans and a string. so i wrote down what a state machine actually *is*, in about twenty lines, and never went back.
+---
+
+import Highlight from "@components/post/Highlight.astro";
+
+## the problem
+
+every app i build ends up with the same four-line ritual: `isLoading`, `error`, `data`, and a pile of `useEffect` hooks praying nobody runs them in the wrong order. it works. it also produces the kind of bug where you click <Highlight>"submit" twice during a slow connection</Highlight> and the form sends two requests, gets two errors, and renders a third state nobody designed for.
+
+i tried xstate. i tried effector. they're great. they're also a lot. for the kind of thing i build — a settings panel, a checkout step, a song picker — they bring a whole ecosystem to a knife fight.
+
+> a state machine is just a function that takes a state and an event and returns the next state. that's the whole idea. the rest is paperwork.
+
+## a shape
+
+i drew this on the back of a receipt at a taquería in la paz. the trick is that you don't need types or a DSL. you need a table.
+
+## the code
+
+the whole thing fits in one screen. no dependencies, no types-required-to-use-it, no opinions about how you render. you give it a table. it gives you a function.
+
+```js
+const machine = (initial, transitions) => {
+  let state = initial;
+  const listeners = new Set();
+
+  return {
+    // what state are we in right now?
+    get: () => state,
+
+    // fire an event; advance if the table allows
+    send: (event) => {
+      const next = transitions[state]?.[event];
+      if (!next) return; // silently ignore
+      state = next;
+      listeners.forEach((fn) => fn(state));
+    },
+
+    on: (fn) => {
+      listeners.add(fn);
+      return () => listeners.delete(fn);
+    },
+  };
+};
+```
+
+that's it. you call it with `machine('idle', {...})`, you get back something with three methods, and the only thing you can do wrong is forget to add a transition — at which point sending the event does nothing, which is exactly what you want.
+
+## why bother
+
+because the bug i described at the top — the double-submit during a slow connection — **can't happen** here. there is no transition from `loading` back to `loading`. `send('FETCH')` while loading is a no-op. the machine is the documentation, the validation, and the implementation, all at once.
+
+and because most of my apps have one or two of these and that's enough. i don't need actors, guards, parallel regions, or a visualizer. i need to not ship the bug. twenty lines does that.
+
+the joke i tell myself is that this is the smallest possible state machine. it isn't, of course — you could go smaller, drop the listeners, hand-roll the dispatch in your component. but at some point it stops being a machine and starts being four `if` statements wearing a trenchcoat. <Highlight>this is the line for me.</Highlight>

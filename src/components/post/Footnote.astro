@@ -1,0 +1,8 @@
+---
+interface Props {
+  n: number | string;
+}
+const { n } = Astro.props;
+---
+
+<sup class="fn"><a href={`#fn-${n}`} id={`fnref-${n}`}>{n}</a></sup>

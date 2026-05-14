@@ -1,0 +1,204 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Prose from "@components/post/Prose.astro";
+import Highlight from "@components/post/Highlight.astro";
+import MarginNote from "@components/post/MarginNote.astro";
+import Diagram from "@components/post/Diagram.astro";
+import Footnote from "@components/post/Footnote.astro";
+import Footnotes from "@components/post/Footnotes.astro";
+import { SITE } from "@utils/site";
+
+export async function getStaticPaths() {
+  const all = (await getCollection("posts"))
+    .filter((p) => !p.data.draft || import.meta.env.DEV)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return all.map((post, i) => {
+    const next = all[i + 1] ?? all[i - 1] ?? null;
+    return {
+      params: { slug: post.id },
+      props: { post, next },
+    };
+  });
+}
+
+interface Props {
+  post: CollectionEntry<"posts">;
+  next: CollectionEntry<"posts"> | null;
+}
+
+const { post, next } = Astro.props;
+const { Content, headings } = await render(post);
+
+const tocItems = headings.filter((h) => h.depth === 2);
+
+const dateFmt = post.data.date
+  .toLocaleString("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  })
+  .toLowerCase();
+
+const nextDateFmt = next?.data.date
+  .toLocaleString("en-US", { month: "short", day: "2-digit" })
+  .toLowerCase();
+
+const location = post.data.location ?? SITE.location;
+const initial = SITE.name.charAt(0);
+---
+
+<Layout>
+  <div class="post-progress" id="post-progress"></div>
+
+  {
+    tocItems.length > 0 && (
+      <nav class="post-toc" id="post-toc" aria-label="On this page">
+        <div class="toc-label">on this page</div>
+        {tocItems.map((h) => (
+          <a href={`#${h.slug}`} data-target={h.slug}>
+            {h.text}
+          </a>
+        ))}
+      </nav>
+    )
+  }
+
+  <div class="post-topbar">
+    <a href="/#writing" class="back-link">
+      <span class="arr">←</span>
+      <span>back to writing</span>
+    </a>
+    <div class="right">
+      <span>{SITE.name}</span>
+      {
+        SITE.socials
+          .filter((s) => s.label === "github" || s.label === "x")
+          .map((s) => (
+            <a href={s.href} target="_blank" rel="noopener">
+              {s.label}
+            </a>
+          ))
+      }
+    </div>
+  </div>
+
+  <article class="post-article">
+    <div class="meta-row">
+      {
+        post.data.tag && (
+          <>
+            <span class="tag">{post.data.tag}</span>
+            <span class="dot" />
+          </>
+        )
+      }
+      <span>{dateFmt}</span>
+      <span class="dot"></span>
+      <span>{post.data.read}</span>
+    </div>
+
+    <h1 class="post-title">{post.data.title}</h1>
+
+    {post.data.excerpt && <p class="post-lede">{post.data.excerpt}</p>}
+
+    <div class="by-row">
+      <span class="avatar">{initial}</span>
+      <span class="by-name">{SITE.name}</span>
+      <span class="sep">/</span>
+      <span>{location}</span>
+      {post.data.draft && <span class="right">draft</span>}
+    </div>
+
+    <Prose>
+      <Content
+        components={{
+          Highlight,
+          MarginNote,
+          Diagram,
+          Footnote,
+          Footnotes,
+        }}
+      />
+    </Prose>
+
+    {
+      post.data.tags && post.data.tags.length > 0 && (
+        <div class="tags-row">
+          {post.data.tags.map((t) => (
+            <a href={`/#writing`} class="tag-chip">
+              {t}
+            </a>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      next && (
+        <a href={`/posts/${next.id}`} class="next-post">
+          <div class="label">
+            <span>next post →</span>
+            <span>{nextDateFmt}</span>
+          </div>
+          <div class="nxt-title">
+            {next.data.title} <span class="nxt-arr">→</span>
+          </div>
+        </a>
+      )
+    }
+  </article>
+
+  <footer class="post-foot">
+    <div>made by hand · 4 dogs · 1 guitar · 0 frameworks (almost)</div>
+    <div>
+      <span
+        style="display:inline-block;width:6px;height:6px;border-radius:6px;background:var(--orange);margin-right:6px;vertical-align:middle;"
+      ></span>
+      available for work
+    </div>
+  </footer>
+</Layout>
+
+<script>
+  const prog = document.getElementById("post-progress");
+  if (prog) {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      prog.style.width = pct + "%";
+    };
+    document.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  const tocLinks = [
+    ...document.querySelectorAll<HTMLAnchorElement>("#post-toc a"),
+  ];
+  if (tocLinks.length > 0) {
+    const headings = tocLinks
+      .map((a) =>
+        a.dataset.target ? document.getElementById(a.dataset.target) : null,
+      )
+      .filter((el): el is HTMLElement => el !== null);
+
+    const setActive = () => {
+      const top = window.scrollY + 140;
+      let active = headings[0];
+      for (const h of headings) {
+        if (h.offsetTop <= top) active = h;
+      }
+      tocLinks.forEach((a) =>
+        a.classList.toggle(
+          "active",
+          a.dataset.target === (active && active.id),
+        ),
+      );
+    };
+    document.addEventListener("scroll", setActive, { passive: true });
+    setActive();
+  }
+</script>
